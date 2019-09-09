@@ -4,4 +4,5 @@
 
 DB INFO: 
 
-CA1DB / CA1DB_test
+Database name: CA1DB
+Database_test name: A1DB_test
