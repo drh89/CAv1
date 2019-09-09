@@ -7,4 +7,4 @@ DB INFO:
 
 Database name: CA1DB
 
-Database_test name: A1DB_test
+Database_test name: CA1DB_test
