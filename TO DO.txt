@@ -3,7 +3,7 @@
 
 
 - Setup af databaser
-	(Setup af samme miljø på alle pcer i gruppe)
+	(Setup af samme miljÃ¸ pÃ¥ alle pcer i gruppe)
 	(Samme database navne etc.)
 
 - Setup af Travis
@@ -14,3 +14,7 @@
 - Setup af gruppe kontrakt
 	(Krav og konsekvenser for at merge og pushe til master)
 	Brug af feature branches, men ikke dev branch.
+	
+	
+- Lav om pÃ¥ travis tag i readme
+	
