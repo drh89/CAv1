@@ -3,7 +3,7 @@
 
 
 - Setup af databaser
-	(Setup af samme miljø på alle pcer i gruppe)
+	(Setup af samme miljÃ¸ pÃ¥ alle pcer i gruppe)
 	(Samme database navne etc.)
 
 - Setup af Travis
@@ -14,6 +14,7 @@
 - Setup af gruppe kontrakt
 	(Krav og konsekvenser for at merge og pushe til master)
 	Brug af feature branches, men ikke dev branch.
+<<<<<<< HEAD
 
 
 
@@ -21,3 +22,9 @@
 			##Stretch Goal##
 
 - Udskift @Get med @Post (Så info ik bliver lagt URL)
+=======
+	
+	
+- Lav om pÃ¥ travis tag i readme
+	
+>>>>>>> bab5e9f5b0cb1c96a0ce53bd005319b742e94972
