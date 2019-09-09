@@ -14,3 +14,10 @@
 - Setup af gruppe kontrakt
 	(Krav og konsekvenser for at merge og pushe til master)
 	Brug af feature branches, men ikke dev branch.
+
+
+
+
+			##Stretch Goal##
+
+- Udskift @Get med @Post (Så info ik bliver lagt URL)
