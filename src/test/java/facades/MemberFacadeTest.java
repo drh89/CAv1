@@ -1,7 +1,8 @@
 package facades;
 
 import utils.EMF_Creator;
-import entities.RenameMe;
+import entities.Members;
+import facades.MembersFacade;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -22,7 +23,7 @@ import utils.EMF_Creator.Strategy;
 public class MemberFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static MembersFacade facade;
 
     public MemberFacadeTest() {
     }
@@ -35,7 +36,7 @@ public class MemberFacadeTest {
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-        facade = FacadeExample.getFacadeExample(emf);
+        facade = MembersFacade.getMemberFacade(emf);
     }
 
     /*   **** HINT **** 
@@ -46,8 +47,8 @@ public class MemberFacadeTest {
      */
     @BeforeAll
     public static void setUpClassV2() {
-       emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,Strategy.DROP_AND_CREATE);
-       facade = FacadeExample.getFacadeExample(emf);
+        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
+        //facade = MemberFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -62,9 +63,9 @@ public class MemberFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt", "More text"));
-            em.persist(new RenameMe("aaa", "bbb"));
+            em.createNamedQuery("Members.deleteAllRows").executeUpdate();
+            em.persist(new Members("Meep", "Turqoise with a hint of yellowgreen", 0));
+            em.persist(new Members("Doomlord Bob", "Scarlet", 1));
 
             em.getTransaction().commit();
         } finally {
@@ -77,33 +78,29 @@ public class MemberFacadeTest {
 //        Remove any data after each test was run
     }
 
-    
-    
-    
-
     @Test
     public void testAddMember() {
-        
+
     }
-    
+
     @Test
     public void testDeleteMember() {
-        
+
     }
-    
+
     @Test
     public void testGetMemberByID() {
-        
+
     }
-    
+
     @Test
     public void testGetMemberByName() {
-        
+
     }
-    
+
     @Test
     public void testGetAllMembers() {
-        
+
     }
 
 }

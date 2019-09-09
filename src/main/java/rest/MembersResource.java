@@ -7,8 +7,8 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import entities.Member;
-import facades.FacadeExample;
+import entities.Members;
+import facades.MembersFacade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,7 +22,7 @@ import utils.EMF_Creator;
  * @author emilt
  */
 @Path("member")
-public class MemberResource {
+public class MembersResource {
     
         private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
                 "pu",
@@ -30,7 +30,7 @@ public class MemberResource {
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-    private static final FacadeExample FACADE =  FacadeExample.getFacadeExample(EMF);
+    private static final MembersFacade FACADE =  MembersFacade.getMemberFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
@@ -42,14 +42,14 @@ public class MemberResource {
     @Path("/id/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMember(Member entity, @PathParam("id") Long id) {
+    public String getMember(Members entity, @PathParam("id") Long id) {
         throw new UnsupportedOperationException();
     }
     
     @Path("/name/{name}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMember(Member entity, @PathParam("name") String name) {
+    public String getMember(Members entity, @PathParam("name") String name) {
         throw new UnsupportedOperationException();
     }
     

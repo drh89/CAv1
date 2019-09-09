@@ -5,17 +5,38 @@
  */
 package facades;
 
-import entities.Member;
+import entities.Members;
 import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author emilt
  */
-public class MemberFacade implements MemberFacadeInterface{
+public class MembersFacade implements MemberFacadeInterface {
+
+    private static MembersFacade instance;
+    private static EntityManagerFactory emf;
+    
+    //Private Constructor to ensure Singleton
+    private MembersFacade() {}
+    
+    
+    public static MembersFacade getMemberFacade(EntityManagerFactory _emf) {
+        if (instance == null) {
+            emf = _emf;
+            instance = new MembersFacade();
+        }
+        return instance;
+    }
+
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
 
     @Override
-    public Member addMember(Member member) {
+    public Members addMember(Members member) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -25,18 +46,18 @@ public class MemberFacade implements MemberFacadeInterface{
     }
 
     @Override
-    public Member getMember(Long id) {
+    public Members getMember(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Member getMember(String name) {
+    public Members getMember(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Member> getALlMembers() {
+    public ArrayList<Members> getAllMembers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -10,40 +10,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author emilt
  */
 @Entity
-public class Member implements Serializable {
+@NamedQuery(name = "Members.deleteAllRows", query = "DELETE from Members")
+public class Members implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public Member() {
-    }
-    
-    
-    
+    private String color;
     private String name;
     private int studentID;
-    private String color;
+    
 
-    public Member(String name, int studentID, String color) {
+    public Members() {
+    }
+
+    public Members(String color, String name, int studentID) {
+        this.color = color;
         this.name = name;
         this.studentID = studentID;
-        this.color = color;
     }
 
     public String getName() {
@@ -69,5 +61,13 @@ public class Member implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
-        
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

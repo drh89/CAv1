@@ -5,7 +5,7 @@
  */
 package facades;
 
-import entities.Member;
+import entities.Members;
 import java.util.ArrayList;
 
 /**
@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public interface MemberFacadeInterface {
     
-    public Member addMember(Member member);
+    public Members addMember(Members member);
     
     public void deleteMember(Long id);
     
-    public Member getMember(Long id);
-    public Member getMember(String name);
+    public Members getMember(Long id);
+    public Members getMember(String name);
     
-    public ArrayList<Member> getALlMembers();
+    public ArrayList<Members> getAllMembers();
     
 }

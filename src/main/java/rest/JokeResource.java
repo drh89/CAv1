@@ -25,7 +25,7 @@ public class JokeResource {
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-    private static final JokeFacade FACADE =  JokeFacade.getFacadeExample(EMF);
+    private static final JokeFacade FACADE =  JokeFacade.getJokeFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
