@@ -50,7 +50,7 @@ public class MemberFacadeTest {
     @BeforeAll
     public static void setUpClassV2() {
         emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
-        //facade = MemberFacade.getFacadeExample(emf);
+        facade = MembersFacade.getMemberFacade(emf);
     }
 
     @AfterAll
@@ -66,9 +66,14 @@ public class MemberFacadeTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Members.deleteAllRows").executeUpdate();
-            em.persist(new Members("Meep", "Turqoise with a hint of yellowgreen", 0));
-            em.persist(new Members("Doomlord Bob", "Scarlet", 1));
-
+            em.getTransaction().commit();
+            
+            em.getTransaction().begin();
+            em.persist(new Members("Turqoise with a hint of yellowgreen", "Meep", 0));
+            em.getTransaction().commit();
+            
+            em.getTransaction().begin();
+            em.persist(new Members("Scarlet", "Doomlord Bob", 1));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -80,7 +85,6 @@ public class MemberFacadeTest {
 //        Remove any data after each test was run
     }
 
-    
     @Test
     public void testAddMember() {
         EntityManager em = emf.createEntityManager();
@@ -121,13 +125,7 @@ public class MemberFacadeTest {
 
     @Test
     public void testGetMemberByName() {
-        EntityManager em = emf.createEntityManager();
-        Members member = new Members("DeleteMember", "Test", 10);
-        em.getTransaction().begin();
-        em.persist(member);
-        em.getTransaction().commit();
-        
-        assertEquals(member.getName(),facade.getMembersByName(member.getName()).get(0).getName());
+        assertEquals("Turqoise with a hint of yellowgreen", facade.getMembersByName("Meep").get(0).getColor());
     }
 
     @Test
@@ -135,8 +133,9 @@ public class MemberFacadeTest {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         List l = query.getResultList();
-        
-        assertEquals(l.size(),facade.getAllMembers().size());
+
+        assertEquals(l.size(), facade.getAllMembers().size());
+        assertEquals("Doomlord Bob", facade.getAllMembers().get(1).getName());
     }
 
 }

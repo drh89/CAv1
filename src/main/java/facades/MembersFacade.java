@@ -21,11 +21,11 @@ public class MembersFacade implements MemberFacadeInterface {
 
     private static MembersFacade instance;
     private static EntityManagerFactory emf;
-    
+
     //Private Constructor to ensure Singleton
-    private MembersFacade() {}
-    
-    
+    private MembersFacade() {
+    }
+
     public static MembersFacade getMemberFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -38,7 +38,7 @@ public class MembersFacade implements MemberFacadeInterface {
         return emf.createEntityManager();
     }
 
-     @Override
+    @Override
     public Members addMember(Members member) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -85,27 +85,23 @@ public class MembersFacade implements MemberFacadeInterface {
 
         return l;
     }
-        
+
     public ArrayList<MembersDTO> getMembersDTOByName(String name) {
-        MembersFacade mf = new MembersFacade();
         ArrayList<MembersDTO> mdto = new ArrayList();
-        ArrayList<Members> m = mf.getMembersByName(name);
-        
+        ArrayList<Members> m = getMembersByName(name);
+
         for (int i = 0; i < m.size(); ++i) {
             mdto.add(new MembersDTO(m.get(i)));
         }
-        
         return mdto;
     }
 
     @Override
     public ArrayList<MembersDTO> getAllMembersDTO() {
-        MembersFacade mf = new MembersFacade();
         ArrayList<MembersDTO> mdto = new ArrayList();
-        ArrayList<Members> m = mf.getAllMembers();
-        
+        ArrayList<Members> m = getAllMembers();
+
         for (int i = 0; i < m.size(); ++i) {
-            
             //Current solution to problem occuring when deleting all members and then populating after
             //Problem occurs when there is no members from JPA, and pressing reload name button
             //then the names wont be updated, unless there is another name.
@@ -113,25 +109,23 @@ public class MembersFacade implements MemberFacadeInterface {
             if (i == 0) {
                 if (m.get(i).getName().equals("")) {
                     Members member = m.get(i);
-                    mf.deleteMember(member);
+                    deleteMember(member);
                 }
             }
-            
             mdto.add(new MembersDTO(m.get(i)));
         }
-        
         return mdto;
     }
 
     @Override
     public void populateMembers() {
         MembersFacade mf = new MembersFacade();
-        mf.addMember(new Members("Grøn","Sven",1));
-        mf.addMember(new Members("Blå","Bandit",2));
-        mf.addMember(new Members("Hvid","Bro",3));
-        mf.addMember(new Members("Lilla","Sveske",4));
-        mf.addMember(new Members("Rød","Bandit",5));
-        mf.addMember(new Members("Gul","Abekat",6));
+        mf.addMember(new Members("Grøn", "Sven", 1));
+        mf.addMember(new Members("Blå", "Bandit", 2));
+        mf.addMember(new Members("Hvid", "Bro", 3));
+        mf.addMember(new Members("Lilla", "Sveske", 4));
+        mf.addMember(new Members("Rød", "Bandit", 5));
+        mf.addMember(new Members("Gul", "Abekat", 6));
     }
 
     @Override

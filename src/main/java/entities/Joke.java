@@ -18,7 +18,8 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Joke.findByJokeLine", query = "SELECT j FROM Joke j WHERE j.jokeLine = :jokeLine"),
     @NamedQuery(name = "Joke.findByAuthorName", query = "SELECT j FROM Joke j WHERE j.authorName = :authorName"),
     @NamedQuery(name = "Joke.findByReference", query = "SELECT j FROM Joke j WHERE j.reference = :reference"),
-    @NamedQuery(name = "Joke.findByRating", query = "SELECT j FROM Joke j WHERE j.rating = :rating")
+    @NamedQuery(name = "Joke.findByRating", query = "SELECT j FROM Joke j WHERE j.rating = :rating"),
+    @NamedQuery(name = "Joke.findCount", query = "SELECT COUNT(j) FROM Joke j")
 })
 public class Joke implements Serializable {
 

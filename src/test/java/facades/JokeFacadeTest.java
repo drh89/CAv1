@@ -70,6 +70,10 @@ public class JokeFacadeTest {
             em.getTransaction().begin();
             em.persist(new Joke("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Joke", "cake", 1));
             em.getTransaction().commit();
+            
+            em.getTransaction().begin();
+            em.persist(new Joke("Why don’t crabs donate? Because they’re shellfish.", "None", "Bad Joke", "derpy", 2));
+            em.getTransaction().commit();
 
             em.getTransaction().begin();
             em.persist(new Joke("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Joke", "moronic", 1));
@@ -87,7 +91,7 @@ public class JokeFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void tesGetJokeCount() {
-        assertEquals(2, FACADE.getJokeCount(), "Expects two rows in the database");
+        assertEquals(3, FACADE.getJokeCount());
     }
 
     @Test
@@ -102,7 +106,7 @@ public class JokeFacadeTest {
 
     @Test
     public void testGetDTOByID() {
-        assertEquals("Cringy Joke", FACADE.getJokeDTOByID(FACADE.getAllJokes().get(1).getId()).getType());
+        assertEquals("Cringy Joke", FACADE.getJokeDTOByID(FACADE.getAllJokes().get(2).getId()).getType());
     }
 
     // #### Tests if there is an occurence of the randomly selected value
@@ -113,10 +117,11 @@ public class JokeFacadeTest {
                 ));
     }
 
-    // #### Tests whether it's just the same value being returned ####
-    // #### Note: This test only fails on null values ####
+    // #### Tests whether it's just the same value being returned                       ####
+    // #### Note: This test only fails on null values                                   ####
     // #### Because of the extremely unlikely case of getting the same object 100 times ####
-    // #### The test will NOT fail if there's 1 or less objects ####
+    // #### The test will NOT fail if there's 1 or less objects                         ####
+    // #### Alternative would be logger                                                 ####
     @Test
     public void testRandomMultipleValues() {
         Set<Joke> arr = new HashSet<Joke>();
@@ -136,4 +141,16 @@ public class JokeFacadeTest {
             System.out.println("###########################");
         }
     }
+
+    @Test
+    public void testJkDTOGetAll() {
+        assertEquals("Bad Joke", FACADE.getAllJokesDTO().get(0).getType());
+    }
+
+    @Test
+    public void testJkDTOGetJokesByType() {
+        assertEquals("Chicken and egg", FACADE.getJokesDTOByType("Bad Joke").get(0).getReference());
+        assertEquals(2, FACADE.getJokesDTOByType("Bad Joke").size());
+    }
+
 }
