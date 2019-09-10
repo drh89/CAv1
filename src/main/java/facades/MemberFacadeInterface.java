@@ -5,6 +5,7 @@
  */
 package facades;
 
+import DTO.MembersDTO;
 import entities.Members;
 import java.util.ArrayList;
 
@@ -21,5 +22,14 @@ public interface MemberFacadeInterface {
     public ArrayList<Members> getMembersByName(String name);
     
     public ArrayList<Members> getAllMembers();
+    
+    
+    public ArrayList<MembersDTO> getMembersDTOByName(String name);
+    
+    public ArrayList<MembersDTO> getAllMembersDTO();
+    
+    public void populateMembers();
+    
+    public void deleteAllMembers();
     
 }

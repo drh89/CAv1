@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dat3CA1DB/rest-jpa-devops-CA1DB.svg?branch=master)](https://travis-ci.org/dat3CA1DB/rest-jpa-devops-CA1DB)
+[![Build Status](https://travis-ci.org/Mutestock/CA1)
 
 
 

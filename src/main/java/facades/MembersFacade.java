@@ -5,6 +5,7 @@
  */
 package facades;
 
+import DTO.MembersDTO;
 import entities.Members;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
@@ -83,6 +84,52 @@ public class MembersFacade implements MemberFacadeInterface {
         }
 
         return l;
+    }
+
+    @Override
+    public ArrayList<MembersDTO> getMembersDTOByName(String name) {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<MembersDTO> mdto = new ArrayList();
+        ArrayList<Members> m = mf.getMembersByName(name);
+        
+        for (int i = 0; i < m.size(); ++i) {
+            mdto.add(new MembersDTO(m.get(i)));
+        }
+        
+        return mdto;
+    }
+
+    @Override
+    public ArrayList<MembersDTO> getAllMembersDTO() {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<MembersDTO> mdto = new ArrayList();
+        ArrayList<Members> m = mf.getAllMembers();
+        
+        for (int i = 0; i < m.size(); ++i) {
+            mdto.add(new MembersDTO(m.get(i)));
+        }
+        
+        return mdto;
+    }
+
+    @Override
+    public void populateMembers() {
+        MembersFacade mf = new MembersFacade();
+        mf.addMember(new Members("Grøn","Sven",1));
+        mf.addMember(new Members("Blå","Bandit",2));
+        mf.addMember(new Members("Hvid","Bro",3));
+        mf.addMember(new Members("Lilla","Sveske",4));
+        mf.addMember(new Members("Rød","Bandit",5));
+        mf.addMember(new Members("Gul","Abekat",6));
+    }
+
+    @Override
+    public void deleteAllMembers() {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<Members> m = mf.getAllMembers();
+        for (int i = 0; i < m.size(); ++i) {
+            mf.deleteMember(m.get(i));
+        }
     }
 
 }
