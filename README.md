@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Mutestock/CA1.png)](https://travis-ci.org/Mutestock/CA1
+[![Build Status](https://travis-ci.org/Mutestock/CA1.png)](https://travis-ci.org/Mutestock/CA1)
 
 
 
