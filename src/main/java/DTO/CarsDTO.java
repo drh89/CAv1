@@ -5,11 +5,14 @@
  */
 package DTO;
 
+import entities.Cars;
+
 /**
  *
  * @author Dennis
  */
 public class CarsDTO {
+
     private String make;
     private String model;
     private Long registrationDate;
@@ -18,17 +21,16 @@ public class CarsDTO {
     private Long mileage;
     private Long doors;
     private Long price;
-    
-    
-    public CarsDTO(String make, String model, Long registrationDate, Long modelYear, Long horsepower, Long mileage, Long doors, Long price) {
-        this.make = make;
-        this.model = model;
-        this.registrationDate = registrationDate;
-        this.modelYear = modelYear;
-        this.horsepower = horsepower;
-        this.mileage = mileage;
-        this.doors = doors;
-        this.price = price;
+
+    public CarsDTO(Cars car) {
+        this.make = car.getMake();
+        this.model = car.getModel();
+        this.registrationDate = car.getRegistrationDate();
+        this.modelYear = car.getModelYear();
+        this.horsepower = car.getHorsepower();
+        this.mileage = car.getMileage();
+        this.doors = car.getDoors();
+        this.price = car.getPrice();
     }
 
     public String getMake() {
@@ -95,5 +97,4 @@ public class CarsDTO {
         this.price = price;
     }
 
-    
 }

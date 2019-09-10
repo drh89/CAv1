@@ -1,11 +1,14 @@
 package rest;
 
+import DTO.CarsDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entities.Cars;
 import entities.Joke;
 import facades.CarsFacade;
 import utils.EMF_Creator;
 import facades.JokeFacade;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -15,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("cars")
@@ -44,9 +48,14 @@ public class CarsResource {
 //    }
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void getAllCars() {
-        
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllCars() {
+        List<Cars> cars = FACADE.getCars();
+        List<CarsDTO> carsDTO = null;
+        for (Cars car : cars) {
+            carsDTO.add(new CarsDTO(car));
+            }
+        return Response.ok().entity(GSON.toJson(carsDTO)).build();
     }
     
     @PUT
