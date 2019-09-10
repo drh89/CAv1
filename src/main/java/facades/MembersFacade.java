@@ -7,8 +7,10 @@ package facades;
 
 import entities.Members;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -58,13 +60,17 @@ public class MembersFacade implements MemberFacadeInterface {
     }
 
     @Override
-    public Members getMember(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public ArrayList<Members> getMembersByName(String name) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m WHERE m.name = :name", Members.class);
+        query.setParameter("name", name);
+        ArrayList<Members> l = new ArrayList();
 
-    @Override
-    public Members getMember(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Members m : query.getResultList()) {
+            l.add((Members) m);
+        }
+
+        return l;
     }
 
     @Override

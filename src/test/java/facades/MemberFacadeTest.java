@@ -85,49 +85,50 @@ public class MemberFacadeTest {
     @Test
     public void testAddMember() {
         EntityManager em = emf.createEntityManager();
-        
+
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         List l = query.getResultList();
         int before = l.size();
-               
+
         Members member = new Members("AddMember", "Test", 10);
         facade.addMember(member);
-        
+
         query = em.createQuery("SELECT m FROM Members m", Members.class);
         l = query.getResultList();
         int after = l.size();
-        
-        assertEquals(before+1,after);
+
+        assertEquals(before + 1, after);
     }
 
     @Test
     public void testDeleteMember() {
         EntityManager em = emf.createEntityManager();
-        
+
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         List l = query.getResultList();
         int before = l.size();
         Members member = new Members("DeleteMember", "Test", 10);
-        
+
         em.getTransaction().begin();
         em.persist(member);
         em.getTransaction().commit();
         facade.deleteMember(member);
-        
+
         l = query.getResultList();
         int after = l.size();
-        
-        assertEquals(before,after);
-    }
 
-    @Test
-    public void testGetMemberByID() {
-
+        assertEquals(before, after);
     }
 
     @Test
     public void testGetMemberByName() {
-
+        EntityManager em = emf.createEntityManager();
+        Members member = new Members("DeleteMember", "Test", 10);
+        em.getTransaction().begin();
+        em.persist(member);
+        em.getTransaction().commit();
+        
+        assertEquals(member.getName(),facade.getMembersByName(member.getName()).get(0).getName());
     }
 
     @Test
