@@ -1,6 +1,5 @@
 package rest;
 
-import entities.Joke;
 import entities.Members;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;

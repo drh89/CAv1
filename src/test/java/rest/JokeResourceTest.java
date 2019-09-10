@@ -70,8 +70,8 @@ public class JokeResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(new Joke("Some txt", "More text", "pok", "pok"));
-            em.persist(new Joke("KEK", "poksdf", "rawr", "cake"));
+            em.persist(new Joke("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Joke", "cake" ,(byte)1));
+            em.persist(new Joke("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Joke", "moronic" ,(byte)1));
 
             em.getTransaction().commit();
         } finally {
