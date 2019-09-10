@@ -47,7 +47,11 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getMember(Members entity, @PathParam("name") String name) {
         ArrayList<MembersDTO> l = FACADE.getMembersDTOByName(name);
-        return GSON.toJson(l);
+        if (l.isEmpty()) {
+            return "";
+        } else {
+            return GSON.toJson(l);
+        }
     }
     
     @Path("/all")
@@ -55,7 +59,11 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
         ArrayList<MembersDTO> l = FACADE.getAllMembersDTO();
-        return GSON.toJson(l);
+        if (l.isEmpty()) {
+            return "";
+        } else {
+            return GSON.toJson(l);
+        }
     }
     
     @Path("/populate")
@@ -74,6 +82,13 @@ public class MembersResource {
         return "Your database has been cleared";
     }
 
-    
+    @Path("count")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMembersCount() {
+        long count = FACADE.getAllMembers().size();
+        //System.out.println("--------------->"+count);
+        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+    }
     
 }
