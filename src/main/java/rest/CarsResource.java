@@ -66,7 +66,7 @@ public class CarsResource {
         Cars c2 = new Cars(2L, "VW", "Golf", "03/07-2010", 2010L, 115L, 206000L, 5L, 130000L);
         Cars c3 = new Cars(3L, "Mitsubishi", "Lancer", "25/06-1995", 1994L, 116L, 344000L, 4L, 16000L);
         Cars c4 = new Cars(4L, "BMW", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        ArrayList<Cars> cars = new ArrayList();
+        
         
         
         FACADE.populate(c1);
