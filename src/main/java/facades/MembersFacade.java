@@ -66,9 +66,6 @@ public class MembersFacade implements MemberFacadeInterface {
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m WHERE m.name = :name", Members.class);
         query.setParameter("name", name);
         ArrayList<Members> l = new ArrayList();
-<<<<<<< HEAD
-
-=======
 
         for (Members m : query.getResultList()) {
             l.add((Members) m);
@@ -77,22 +74,6 @@ public class MembersFacade implements MemberFacadeInterface {
         return l;
     }
 
-    @Override
-    public ArrayList<Members> getAllMembers() {
-        EntityManager em = getEntityManager();
-        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
-        ArrayList<Members> l = new ArrayList();
-
->>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
-        for (Members m : query.getResultList()) {
-            l.add((Members) m);
-        }
-
-        return l;
-    }
-
-    @Override
-<<<<<<< HEAD
     public ArrayList<Members> getAllMembers() {
         EntityManager em = getEntityManager();
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
@@ -103,7 +84,8 @@ public class MembersFacade implements MemberFacadeInterface {
         }
 
         return l;
-=======
+    }
+        
     public ArrayList<MembersDTO> getMembersDTOByName(String name) {
         MembersFacade mf = new MembersFacade();
         ArrayList<MembersDTO> mdto = new ArrayList();
@@ -159,7 +141,5 @@ public class MembersFacade implements MemberFacadeInterface {
         for (int i = 0; i < m.size(); ++i) {
             mf.deleteMember(m.get(i));
         }
->>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
     }
-
 }

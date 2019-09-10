@@ -6,11 +6,6 @@ import facades.MembersFacade;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-<<<<<<< HEAD
-import javax.persistence.NamedQuery;
-import javax.persistence.Query;
-=======
->>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
 import javax.persistence.TypedQuery;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
