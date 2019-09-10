@@ -47,11 +47,7 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getMember(Members entity, @PathParam("name") String name) {
         ArrayList<MembersDTO> l = FACADE.getMembersDTOByName(name);
-        if (l.isEmpty()) {
-            return "";
-        } else {
             return GSON.toJson(l);
-        }
     }
     
     @Path("/all")
@@ -79,6 +75,7 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String deleteAllMembers() {
         FACADE.deleteAllMembers();
+        FACADE.addMember(new Members("","",0));
         return "Your database has been cleared";
     }
 

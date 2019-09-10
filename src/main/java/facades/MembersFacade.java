@@ -106,6 +106,18 @@ public class MembersFacade implements MemberFacadeInterface {
         ArrayList<Members> m = mf.getAllMembers();
         
         for (int i = 0; i < m.size(); ++i) {
+            
+            //Current solution to problem occuring when deleting all members and then populating after
+            //Problem occurs when there is no members from JPA, and pressing reload name button
+            //then the names wont be updated, unless there is another name.
+            //change the javascript to handle if data is empty
+            if (i == 0) {
+                if (m.get(i).getName().equals("")) {
+                    Members member = m.get(i);
+                    mf.deleteMember(member);
+                }
+            }
+            
             mdto.add(new MembersDTO(m.get(i)));
         }
         
