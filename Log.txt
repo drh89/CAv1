@@ -16,4 +16,7 @@ Tuesday 10-09-19
 
 	Svensmark:
 		Member Facade
-		Test environment for Member facade	
+		Test environment for Member facade
+		DTO Class for Member
+		HTML for member task (index.html)
+		Javascript for index.html (member task)	
