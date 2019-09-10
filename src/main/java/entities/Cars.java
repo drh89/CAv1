@@ -22,6 +22,29 @@ public class Cars implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String make;
+    private String model;
+    private Long registrationDate;
+    private Long modelYear;
+    private Long horsepower;
+    private Long mileage;
+    private Long doors;
+    private Long price;
+
+    public Cars() {
+    }
+
+    public Cars(Long id, String make, String model, Long registrationDate, Long modelYear, Long horsepower, Long mileage, Long doors, Long price) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.registrationDate = registrationDate;
+        this.modelYear = modelYear;
+        this.horsepower = horsepower;
+        this.mileage = mileage;
+        this.doors = doors;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -31,29 +54,68 @@ public class Cars implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getMake() {
+        return make;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cars)) {
-            return false;
-        }
-        Cars other = (Cars) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setMake(String make) {
+        this.make = make;
     }
 
-    @Override
-    public String toString() {
-        return "entities.Cars[ id=" + id + " ]";
+    public String getModel() {
+        return model;
     }
-    
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Long getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Long registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public Long getModelYear() {
+        return modelYear;
+    }
+
+    public void setModelYear(Long modelYear) {
+        this.modelYear = modelYear;
+    }
+
+    public Long getHorsepower() {
+        return horsepower;
+    }
+
+    public void setHorsepower(Long horsepower) {
+        this.horsepower = horsepower;
+    }
+
+    public Long getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Long mileage) {
+        this.mileage = mileage;
+    }
+
+    public Long getDoors() {
+        return doors;
+    }
+
+    public void setDoors(Long doors) {
+        this.doors = doors;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
 }
