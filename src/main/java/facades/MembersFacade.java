@@ -5,6 +5,7 @@
  */
 package facades;
 
+import DTO.MembersDTO;
 import entities.Members;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class MembersFacade implements MemberFacadeInterface {
         return emf.createEntityManager();
     }
 
-    @Override
+     @Override
     public Members addMember(Members member) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -65,6 +66,9 @@ public class MembersFacade implements MemberFacadeInterface {
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m WHERE m.name = :name", Members.class);
         query.setParameter("name", name);
         ArrayList<Members> l = new ArrayList();
+<<<<<<< HEAD
+
+=======
 
         for (Members m : query.getResultList()) {
             l.add((Members) m);
@@ -79,11 +83,83 @@ public class MembersFacade implements MemberFacadeInterface {
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         ArrayList<Members> l = new ArrayList();
 
+>>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
         for (Members m : query.getResultList()) {
             l.add((Members) m);
         }
 
         return l;
+    }
+
+    @Override
+<<<<<<< HEAD
+    public ArrayList<Members> getAllMembers() {
+        EntityManager em = getEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
+        ArrayList<Members> l = new ArrayList();
+
+        for (Members m : query.getResultList()) {
+            l.add((Members) m);
+        }
+
+        return l;
+=======
+    public ArrayList<MembersDTO> getMembersDTOByName(String name) {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<MembersDTO> mdto = new ArrayList();
+        ArrayList<Members> m = mf.getMembersByName(name);
+        
+        for (int i = 0; i < m.size(); ++i) {
+            mdto.add(new MembersDTO(m.get(i)));
+        }
+        
+        return mdto;
+    }
+
+    @Override
+    public ArrayList<MembersDTO> getAllMembersDTO() {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<MembersDTO> mdto = new ArrayList();
+        ArrayList<Members> m = mf.getAllMembers();
+        
+        for (int i = 0; i < m.size(); ++i) {
+            
+            //Current solution to problem occuring when deleting all members and then populating after
+            //Problem occurs when there is no members from JPA, and pressing reload name button
+            //then the names wont be updated, unless there is another name.
+            //change the javascript to handle if data is empty
+            if (i == 0) {
+                if (m.get(i).getName().equals("")) {
+                    Members member = m.get(i);
+                    mf.deleteMember(member);
+                }
+            }
+            
+            mdto.add(new MembersDTO(m.get(i)));
+        }
+        
+        return mdto;
+    }
+
+    @Override
+    public void populateMembers() {
+        MembersFacade mf = new MembersFacade();
+        mf.addMember(new Members("Grøn","Sven",1));
+        mf.addMember(new Members("Blå","Bandit",2));
+        mf.addMember(new Members("Hvid","Bro",3));
+        mf.addMember(new Members("Lilla","Sveske",4));
+        mf.addMember(new Members("Rød","Bandit",5));
+        mf.addMember(new Members("Gul","Abekat",6));
+    }
+
+    @Override
+    public void deleteAllMembers() {
+        MembersFacade mf = new MembersFacade();
+        ArrayList<Members> m = mf.getAllMembers();
+        for (int i = 0; i < m.size(); ++i) {
+            mf.deleteMember(m.get(i));
+        }
+>>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
     }
 
 }

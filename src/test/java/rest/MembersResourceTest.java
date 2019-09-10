@@ -1,6 +1,7 @@
 package rest;
 
 import entities.Members;
+import facades.MembersFacade;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -31,6 +32,7 @@ public class MembersResourceTest {
     private static final String SERVER_URL = "http://localhost/api";
     //Read this line from a settings-file  since used several places
     private static final String TEST_DB = "jdbc:mysql://localhost:3307/CA1DB_test";
+    private static MembersFacade facade;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -56,6 +58,17 @@ public class MembersResourceTest {
 
         RestAssured.defaultParser = Parser.JSON;
     }
+    
+    @BeforeAll
+    public static void setUpClassV2() {
+        emf = EMF_Creator.createEntityManagerFactory(
+                "pu",
+                "jdbc:mysql://localhost:3307/CA1DB_test",
+                "dev",
+                "ax2",
+                EMF_Creator.Strategy.CREATE);
+        facade = MembersFacade.getMemberFacade(emf);
+    }
 
     @AfterAll
     public static void closeTestServer() {
@@ -80,7 +93,7 @@ public class MembersResourceTest {
         }
     }
 
-   /* @Test
+    @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
         given().when().get("/member").then().statusCode(200);
@@ -94,9 +107,10 @@ public class MembersResourceTest {
                 .get("/member/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("msg", equalTo("Hello World"));
+                .body("msg", equalTo("Hello World - Members"));
     }
 
+   
     @Test
     public void testCount() throws Exception {
         given()
@@ -104,11 +118,8 @@ public class MembersResourceTest {
                 .get("/member/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
+                .body("count", equalTo(facade.getAllMembers().size()));
     }
-*/
-    @Test
-    public void test() {
-        assertEquals(true, true);
-    }
+
+   
 }

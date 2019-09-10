@@ -15,4 +15,12 @@ Monday 09-09-19
 Tuesday 10-09-19
 
 	Svensmark:
+<<<<<<< HEAD
 		Test environment for Member facade	
+=======
+		Member Facade
+		Test environment for Member facade
+		DTO Class for Member
+		HTML for member task (index.html)
+		Javascript for index.html (member task)	
+>>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
