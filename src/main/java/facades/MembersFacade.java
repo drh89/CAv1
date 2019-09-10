@@ -37,7 +37,11 @@ public class MembersFacade implements MemberFacadeInterface {
 
     @Override
     public Members addMember(Members member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        em.persist(member);
+        em.getTransaction().commit();
+        return member;
     }
 
     @Override
