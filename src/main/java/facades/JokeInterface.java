@@ -5,7 +5,9 @@
  */
 package facades;
 
+import DTO.JokeDTO;
 import entities.Joke;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +22,17 @@ public interface JokeInterface {
     
     public Joke getRandomJoke();
     
+    public long getJokeCount();
+    
     public void populateJoke();
-       
+    
+    public void deleteAllJokes();
+    
+    public Joke createJoke(Joke j);
+    
+    public List<JokeDTO> getAllJokesDTO();
+    
+    public List<JokeDTO> getJokesDTOByType(String type);
+    
 }
 

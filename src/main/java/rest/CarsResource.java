@@ -74,7 +74,7 @@ public class CarsResource {
         FACADE.populate(c2);
         FACADE.populate(c3);
         FACADE.populate(c4);
-        return "Succes!!!";
+        return "Success!!!";
     }
     
     @PUT
