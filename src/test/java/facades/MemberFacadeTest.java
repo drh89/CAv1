@@ -133,7 +133,11 @@ public class MemberFacadeTest {
 
     @Test
     public void testGetAllMembers() {
-
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
+        List l = query.getResultList();
+        
+        assertEquals(l.size(),facade.getAllMembers().size());
     }
 
 }

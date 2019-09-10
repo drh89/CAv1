@@ -75,7 +75,15 @@ public class MembersFacade implements MemberFacadeInterface {
 
     @Override
     public ArrayList<Members> getAllMembers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
+        ArrayList<Members> l = new ArrayList();
+
+        for (Members m : query.getResultList()) {
+            l.add((Members) m);
+        }
+
+        return l;
     }
 
 }
