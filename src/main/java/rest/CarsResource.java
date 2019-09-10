@@ -47,15 +47,16 @@ public class CarsResource {
 //        //System.out.println("--------------->"+count);
 //        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
 //    }
-
-    @POST
+    
+    @Path("/all")
+    @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAllCars() {
         List<Cars> cars = FACADE.getCars();
-        List<CarsDTO> carsDTO = null;
-        for (Cars car : cars) {
+        List<CarsDTO> carsDTO = new ArrayList();
+        cars.forEach((car) -> {
             carsDTO.add(new CarsDTO(car));
-            }
+        });
         return Response.ok().entity(GSON.toJson(carsDTO)).build();
     }
     
