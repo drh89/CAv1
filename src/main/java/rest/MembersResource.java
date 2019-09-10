@@ -5,10 +5,13 @@
  */
 package rest;
 
+import DTO.MembersDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Members;
 import facades.MembersFacade;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -38,26 +41,37 @@ public class MembersResource {
     public String demo() {
         return "{\"msg\":\"Hello World - Members\"}";
     }
-    
-    @Path("/id/{id}")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getMember(Members entity, @PathParam("id") Long id) {
-        throw new UnsupportedOperationException();
-    }
-    
+
     @Path("/name/{name}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getMember(Members entity, @PathParam("name") String name) {
-        throw new UnsupportedOperationException();
+        ArrayList<MembersDTO> l = FACADE.getMembersDTOByName(name);
+        return GSON.toJson(l);
     }
     
     @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
-        throw new UnsupportedOperationException();
+        ArrayList<MembersDTO> l = FACADE.getAllMembersDTO();
+        return GSON.toJson(l);
+    }
+    
+    @Path("/populate")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populateMembers() {
+        FACADE.populateMembers();
+        return "Your database has been populated";
+    }
+    
+    @Path("/deleteAll")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String deleteAllMembers() {
+        FACADE.deleteAllMembers();
+        return "Your database has been cleared";
     }
 
     

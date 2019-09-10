@@ -14,7 +14,6 @@
 - Setup af gruppe kontrakt
 	(Krav og konsekvenser for at merge og pushe til master)
 	Brug af feature branches, men ikke dev branch.
-<<<<<<< HEAD
 
 
 
@@ -22,9 +21,5 @@
 			##Stretch Goal##
 
 - Udskift @Get med @Post (Så info ik bliver lagt URL)
-=======
-	
 	
 - Lav om pÃ¥ travis tag i readme
-	
->>>>>>> bab5e9f5b0cb1c96a0ce53bd005319b742e94972
