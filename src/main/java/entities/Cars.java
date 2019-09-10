@@ -10,12 +10,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Ryge <your.name at your.org>
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name= "cars.getAll", query ="SELECT c FROM Cars c")
+})
 public class Cars implements Serializable {
 
     private static final long serialVersionUID = 1L;
