@@ -6,12 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,7 +32,8 @@ public class Cars implements Serializable {
     private Long id;
     private String make;
     private String model;
-    private Long registrationDate;
+    @Temporal(TemporalType.DATE)
+    private Date registrationDate;
     private Long modelYear;
     private Long horsepower;
     private Long mileage;
@@ -39,7 +43,7 @@ public class Cars implements Serializable {
     public Cars() {
     }
 
-    public Cars(Long id, String make, String model, Long registrationDate, Long modelYear, Long horsepower, Long mileage, Long doors, Long price) {
+    public Cars(Long id, String make, String model, Date registrationDate, Long modelYear, Long horsepower, Long mileage, Long doors, Long price) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -75,11 +79,11 @@ public class Cars implements Serializable {
         this.model = model;
     }
 
-    public Long getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Long registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
