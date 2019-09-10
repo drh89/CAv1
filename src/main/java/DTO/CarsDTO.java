@@ -16,7 +16,7 @@ public class CarsDTO {
 
     private String make;
     private String model;
-    private Date registrationDate;
+    private String registrationDate;
     private Long modelYear;
     private Long horsepower;
     private Long mileage;
@@ -50,11 +50,11 @@ public class CarsDTO {
         this.model = model;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 
