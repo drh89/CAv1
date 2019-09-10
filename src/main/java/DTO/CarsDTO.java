@@ -6,6 +6,7 @@
 package DTO;
 
 import entities.Cars;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ public class CarsDTO {
 
     private String make;
     private String model;
-    private Long registrationDate;
+    private Date registrationDate;
     private Long modelYear;
     private Long horsepower;
     private Long mileage;
@@ -49,11 +50,11 @@ public class CarsDTO {
         this.model = model;
     }
 
-    public Long getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Long registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
