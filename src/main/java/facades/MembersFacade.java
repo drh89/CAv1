@@ -45,8 +45,16 @@ public class MembersFacade implements MemberFacadeInterface {
     }
 
     @Override
-    public void deleteMember(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMember(Members member) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Members memb = em.merge(member);
+            em.remove(memb);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
