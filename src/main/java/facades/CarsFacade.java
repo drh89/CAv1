@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 
 /**
  *
@@ -34,12 +36,14 @@ public class CarsFacade {
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-        public List<Cars> getCars(){
+
+    public List<Cars> getCars() {
         EntityManager em = getEntityManager();
-        TypedQuery tq = em.createNamedQuery("cars.all", Cars.class);
+        TypedQuery tq = em.createNamedQuery("cars.getAll", Cars.class);
         List<Cars> cars = tq.getResultList();
         return cars;
     }
+    
+    //this is subject to change
 
 }
