@@ -7,8 +7,10 @@ package facades;
 
 import entities.Members;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -37,27 +39,51 @@ public class MembersFacade implements MemberFacadeInterface {
 
     @Override
     public Members addMember(Members member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        em.persist(member);
+        em.getTransaction().commit();
+        return member;
     }
 
     @Override
-    public void deleteMember(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMember(Members member) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Members memb = em.merge(member);
+            em.remove(memb);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
-    public Members getMember(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public ArrayList<Members> getMembersByName(String name) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m WHERE m.name = :name", Members.class);
+        query.setParameter("name", name);
+        ArrayList<Members> l = new ArrayList();
 
-    @Override
-    public Members getMember(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Members m : query.getResultList()) {
+            l.add((Members) m);
+        }
+
+        return l;
     }
 
     @Override
     public ArrayList<Members> getAllMembers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
+        ArrayList<Members> l = new ArrayList();
+
+        for (Members m : query.getResultList()) {
+            l.add((Members) m);
+        }
+
+        return l;
     }
 
 }

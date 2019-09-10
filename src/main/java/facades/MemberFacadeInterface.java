@@ -16,10 +16,9 @@ public interface MemberFacadeInterface {
     
     public Members addMember(Members member);
     
-    public void deleteMember(Long id);
-    
-    public Members getMember(Long id);
-    public Members getMember(String name);
+    public void deleteMember(Members member);
+
+    public ArrayList<Members> getMembersByName(String name);
     
     public ArrayList<Members> getAllMembers();
     

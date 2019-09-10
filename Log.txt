@@ -1,7 +1,6 @@
 Monday 09-09-19
 
 	Mute/Svensmark:
-		
 		Test environment preparation
 		Joke entity
 		Member entity
@@ -13,4 +12,7 @@ Monday 09-09-19
 		Implemented interface with unsupportedoperations
 		
 	
-		
+Tuesday 10-09-19
+
+	Svensmark:
+		Test environment for Member facade	
