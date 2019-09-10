@@ -1,0 +1,19 @@
+Monday 09-09-19
+
+	Mute/Svensmark:
+		Test environment preparation
+		Joke entity
+		Member entity
+		CI-Travis
+		Github Repository setup
+		Created local databases; standard and test
+		Created server database
+		Created Interface for Member
+		Implemented interface with unsupportedoperations
+		
+	
+Tuesday 10-09-19
+
+	Svensmark:
+		Member Facade
+		Test environment for Member facade	
