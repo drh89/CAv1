@@ -67,7 +67,7 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String populateMembers() {
         FACADE.populateMembers();
-        return "Your database has been populated";
+        return "{\"msg\":\"Your database has been populated..\"}";
     }
     
     @Path("/deleteAll")
@@ -76,7 +76,7 @@ public class MembersResource {
     public String deleteAllMembers() {
         FACADE.deleteAllMembers();
         FACADE.addMember(new Members("","",0));
-        return "Your database has been cleared";
+        return "{\"msg\":\"Your database has been cleared..\"}";
     }
 
     @Path("count")
