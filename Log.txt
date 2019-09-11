@@ -15,12 +15,13 @@ Monday 09-09-19
 Tuesday 10-09-19
 
 	Svensmark:
-		Test environment for Member facade	
-		Member Facade
-		Test environment for Member facade
-		DTO Class for Member
+		Member Facade Tests
+		Member Facade (+ interface)
+		Member Resource
+		Member Resource Test
+		Member DTO
 		HTML for member task (index.html)
-		Javascript for index.html (member task)	
+		Javascript for index.html (memberScript.js)	
 	Mute:
 		Basic HTML / Javascript setup
 		JokesInterface
@@ -29,3 +30,11 @@ Tuesday 10-09-19
 		JokesResources
 		JokesFacadeTests
 		JokesResourceTests
+
+
+Wednesday 11-09-19
+
+	Svensmark:
+		Cars Facade (+ interface)
+		Cars Facade Tests
+		Cars Resource

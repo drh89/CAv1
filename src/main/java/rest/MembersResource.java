@@ -24,7 +24,7 @@ import utils.EMF_Creator;
  *
  * @author emilt
  */
-@Path("member")
+@Path("Members")
 public class MembersResource {
     
         private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(

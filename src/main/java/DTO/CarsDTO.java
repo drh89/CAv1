@@ -6,10 +6,8 @@
 package DTO;
 
 import entities.Cars;
-import java.util.Date;
 
 /**
- *
  * @author Dennis
  */
 public class CarsDTO {
@@ -17,20 +15,12 @@ public class CarsDTO {
     private String make;
     private String model;
     private String registrationDate;
-    private Long modelYear;
-    private Long horsepower;
-    private Long mileage;
-    private Long doors;
     private Long price;
 
     public CarsDTO(Cars car) {
         this.make = car.getMake();
         this.model = car.getModel();
         this.registrationDate = car.getRegistrationDate();
-        this.modelYear = car.getModelYear();
-        this.horsepower = car.getHorsepower();
-        this.mileage = car.getMileage();
-        this.doors = car.getDoors();
         this.price = car.getPrice();
     }
 
@@ -56,38 +46,6 @@ public class CarsDTO {
 
     public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
-    }
-
-    public Long getModelYear() {
-        return modelYear;
-    }
-
-    public void setModelYear(Long modelYear) {
-        this.modelYear = modelYear;
-    }
-
-    public Long getHorsepower() {
-        return horsepower;
-    }
-
-    public void setHorsepower(Long horsepower) {
-        this.horsepower = horsepower;
-    }
-
-    public Long getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(Long mileage) {
-        this.mileage = mileage;
-    }
-
-    public Long getDoors() {
-        return doors;
-    }
-
-    public void setDoors(Long doors) {
-        this.doors = doors;
     }
 
     public Long getPrice() {

@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
+    @NamedQuery(name = "Cars.deleteAllRows", query = "DELETE FROM Cars"),
     @NamedQuery(name= "cars.getAll", query ="SELECT c FROM Cars c")
 })
 public class Cars implements Serializable {
@@ -33,24 +34,15 @@ public class Cars implements Serializable {
     private String make;
     private String model;
     private String registrationDate;
-    private Long modelYear;
-    private Long horsepower;
-    private Long mileage;
-    private Long doors;
     private Long price;
 
     public Cars() {
     }
 
-    public Cars(Long id, String make, String model, String registrationDate, Long modelYear, Long horsepower, Long mileage, Long doors, Long price) {
-        this.id = id;
+    public Cars(String make, String model, String registrationDate, Long price) {
         this.make = make;
         this.model = model;
         this.registrationDate = registrationDate;
-        this.modelYear = modelYear;
-        this.horsepower = horsepower;
-        this.mileage = mileage;
-        this.doors = doors;
         this.price = price;
     }
 
@@ -84,38 +76,6 @@ public class Cars implements Serializable {
 
     public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
-    }
-
-    public Long getModelYear() {
-        return modelYear;
-    }
-
-    public void setModelYear(Long modelYear) {
-        this.modelYear = modelYear;
-    }
-
-    public Long getHorsepower() {
-        return horsepower;
-    }
-
-    public void setHorsepower(Long horsepower) {
-        this.horsepower = horsepower;
-    }
-
-    public Long getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(Long mileage) {
-        this.mileage = mileage;
-    }
-
-    public Long getDoors() {
-        return doors;
-    }
-
-    public void setDoors(Long doors) {
-        this.doors = doors;
     }
 
     public Long getPrice() {

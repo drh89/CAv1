@@ -96,7 +96,7 @@ public class MembersResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/member").then().statusCode(200);
+        given().when().get("/Members").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows
@@ -104,7 +104,7 @@ public class MembersResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/member/").then()
+                .get("/Members/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World - Members"));
@@ -115,7 +115,7 @@ public class MembersResourceTest {
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/member/count").then()
+                .get("/Members/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(facade.getAllMembers().size()));

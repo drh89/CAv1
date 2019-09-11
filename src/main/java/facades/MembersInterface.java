@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author emilt
  */
-public interface MemberFacadeInterface {
+public interface MembersInterface {
     
     public Members addMember(Members member);
     

@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
  *
  * @author emilt
  */
-public class MembersFacade implements MemberFacadeInterface {
+public class MembersFacade implements MembersInterface {
 
     private static MembersFacade instance;
     private static EntityManagerFactory emf;
@@ -119,21 +119,20 @@ public class MembersFacade implements MemberFacadeInterface {
 
     @Override
     public void populateMembers() {
-        MembersFacade mf = new MembersFacade();
-        mf.addMember(new Members("Grøn", "Sven", 1));
-        mf.addMember(new Members("Blå", "Bandit", 2));
-        mf.addMember(new Members("Hvid", "Bro", 3));
-        mf.addMember(new Members("Lilla", "Sveske", 4));
-        mf.addMember(new Members("Rød", "Bandit", 5));
-        mf.addMember(new Members("Gul", "Abekat", 6));
+        addMember(new Members("Grøn", "Sven", 1));
+        addMember(new Members("Blå", "Bandit", 2));
+        addMember(new Members("Hvid", "Bro", 3));
+        addMember(new Members("Lilla", "Sveske", 4));
+        addMember(new Members("Rød", "Bandit", 5));
+        addMember(new Members("Gul", "Abekat", 6));
     }
 
     @Override
     public void deleteAllMembers() {
-        MembersFacade mf = new MembersFacade();
-        ArrayList<Members> m = mf.getAllMembers();
+        ArrayList<Members> m = getAllMembers();
         for (int i = 0; i < m.size(); ++i) {
-            mf.deleteMember(m.get(i));
+            deleteMember(m.get(i));
         }
     }
+    
 }
