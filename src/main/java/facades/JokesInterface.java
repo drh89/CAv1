@@ -20,7 +20,7 @@ public interface JokesInterface {
     
     public Jokes getJokesById(long id);
     
-    public Jokes getRandomJokes();
+    public JokesDTO getRandomJokes();
     
     public long getJokesCount();
     

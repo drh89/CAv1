@@ -1,5 +1,6 @@
 package facades;
 
+import DTO.JokesDTO;
 import utils.EMF_Creator;
 import entities.Jokes;
 import java.util.ArrayList;
@@ -125,9 +126,9 @@ public class JokesFacadeTest {
     // #### Alternative would be logger                                                 ####
     @Test
     public void testRandomMultipleValues() {
-        Set<Jokes> arr = new HashSet<Jokes>();
+        Set<JokesDTO> arr = new HashSet<JokesDTO>();
         for (int i = 0; i < 100; i++) {
-            Jokes j = FACADE.getRandomJokes();
+            JokesDTO j = FACADE.getRandomJokes();
             if (arr.contains(null)) {
                 fail("Set null");
             } else if (arr.size() > 1) {

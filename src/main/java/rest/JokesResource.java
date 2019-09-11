@@ -57,6 +57,13 @@ public class JokesResource {
     public String getAllDTO() {
         return GSON.toJson(FACADE.getAllJokessDTO());
     }
+    
+    @GET
+    @Path("/random")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getRandom() {
+        return GSON.toJson(FACADE.getRandomJokes());
+    }
 
     @Path("/count")
     @GET
@@ -64,4 +71,7 @@ public class JokesResource {
     public String getRenameMeCount() {
         return "{\"count\":" + FACADE.getJokesCount() + "}";
     }
+    
+    
+    
 }

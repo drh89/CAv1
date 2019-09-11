@@ -63,7 +63,7 @@ public class JokesFacade implements JokesInterface {
     }
 
     @Override
-    public Jokes getRandomJokes() {
+    public JokesDTO getRandomJokes() {
         EntityManager em = getEntityManager();
         try {
             List<Jokes> Jokess = em.createNamedQuery("Jokes.findAll")
@@ -73,9 +73,9 @@ public class JokesFacade implements JokesInterface {
                     .map(Jokes::getId)
                     .collect(Collectors.toCollection(ArrayList::new));
             int randomID = ThreadLocalRandom.current().nextInt(0, JokesIDs.size());
-            return (Jokes) em.createNamedQuery("Jokes.findById")
+            return new JokesDTO((Jokes) em.createNamedQuery("Jokes.findById")
                     .setParameter("id", (int) (long) (Jokess.get(randomID).getId()))
-                    .getSingleResult();
+                    .getSingleResult());
         } finally {
             em.close();
         }
