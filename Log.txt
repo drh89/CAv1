@@ -35,6 +35,13 @@ Tuesday 10-09-19
 Wednesday 11-09-19
 
 	Svensmark:
+		(Made new versions of the following)
 		Cars Facade (+ interface)
 		Cars Facade Tests
 		Cars Resource
+		-------------
+		Member HTML (index.html) fixed
+	Mute:
+		Jokes Javascript
+		Jokes HTML
+	
