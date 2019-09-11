@@ -13,13 +13,11 @@ Properties that influence various parts of the IDE, especially code formatting a
 You can copy and paste the single properties, into the pom.xml file and the IDE will pick them up.
 That way multiple projects can share the same settings (useful for formatting rules for example).
 Any value defined here will override the pom.xml file value but is only applicable to the current project.
-<<<<<<< HEAD
 -->
         <org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>ide</org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
     </properties>
 </project-shared-configuration>
-=======
 -->
         <org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>ide</org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
@@ -33,4 +31,3 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
     </properties>
 </project-shared-configuration>
->>>>>>> 01cc6a7ce19d993c5adf8ade2152d1dffdb37f79
