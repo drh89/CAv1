@@ -82,11 +82,6 @@ function getKeyTypesTableHeader(array)
 }
 
 
-function getItemContent(item)
-{
-    return Object.keys(item);
-}
-
 function getItemValues(item)
 {
     return Object.values(item)
