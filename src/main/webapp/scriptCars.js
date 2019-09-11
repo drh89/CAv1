@@ -2,13 +2,80 @@
 
 var table = document.getElementById("table");
 var btnAll = document.getElementById("btnAll");
-var dom = "http://localhost:8080/CAv1/api/cars";
+var btnSortPrice = document.getElementById("btnSortPrice");
+var btnSortMake = document.getElementById("btnSortMake");
+var btnSortModel = document.getElementById("btnSortModel");
+var dom = "http://localhost:8080/CA1/api/cars";
 
 
 
 
 btnAll.addEventListener("click", getAllCars);
+btnSortPrice.addEventListener("click", sortByPrice);
+btnSortMake.addEventListener("click", sortByMake);
+btnSortModel.addEventListener("click", sortByModel);
 
+
+
+
+function sortByMake() {
+    event.preventDefault();
+    var url = dom + "/all";
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return ("" + a.make).localeCompare(b.make);
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            });
+}
+
+
+function sortByModel() {
+    event.preventDefault();
+    var url = dom + "/all";
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return ("" + a.model).localeCompare(b.model);
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            });
+}
+
+
+
+
+
+
+
+
+function sortByPrice() {
+    event.preventDefault();
+    var url = dom + "/all";
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return a.price - b.price;
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            });
+}
 
 
 function getAllCars() {
@@ -25,6 +92,7 @@ function getAllCars() {
 
             });
 }
+
 
 
 
