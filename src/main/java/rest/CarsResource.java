@@ -24,14 +24,14 @@ import javax.ws.rs.core.Response;
 public class CarsResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/CAv1DB",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
-    private static final CarsFacade FACADE =  CarsFacade.getCarsFacade(EMF);
+            "pu",
+            "jdbc:mysql://localhost:3307/CAv1DB",
+            "dev",
+            "ax2",
+            EMF_Creator.Strategy.CREATE);
+    private static final CarsFacade FACADE = CarsFacade.getCarsFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-            
+
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
@@ -45,7 +45,7 @@ public class CarsResource {
 //        //System.out.println("--------------->"+count);
 //        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
 //    }
-    
+
     @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -53,12 +53,13 @@ public class CarsResource {
         List<CarsDTO> carsDTO = FACADE.getAllCarsDTO();
         return Response.ok().entity(GSON.toJson(carsDTO)).build();
     }
-    
+
     @GET
     @Path("/populate")
-    public String populate(){
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populate() {
         FACADE.populateCars();
-        return "Your database has been populated";
+        return "{\"msg\":\"Your database has been populated..\"}";
     }
 
     @Path("/deleteAll")
@@ -66,17 +67,17 @@ public class CarsResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String deleteAllMembers() {
         FACADE.deleteAllCars();
-        FACADE.addCar(new Cars("","","",0L));
-        return "Your database has been cleared";
+        FACADE.addCar(new Cars("", "", "", 0L));
+        return "{\"msg\":\"Your database has been cleared..\"}";
     }
-    
+
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getMembersCount() {
         long count = FACADE.getAllCars().size();
         //System.out.println("--------------->"+count);
-        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+        return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
-    
+
 }
