@@ -12,32 +12,32 @@ import javax.persistence.NamedQuery;
 @Entity
 
 @NamedQueries({
-    @NamedQuery(name = "Joke.deleteAllRows", query = "DELETE FROM Joke"),
-    @NamedQuery(name = "Joke.findAll", query = "SELECT j FROM Joke j"),
-    @NamedQuery(name = "Joke.findById", query = "SELECT j FROM Joke j WHERE j.id = :id"),
-    @NamedQuery(name = "Joke.findByJokeLine", query = "SELECT j FROM Joke j WHERE j.jokeLine = :jokeLine"),
-    @NamedQuery(name = "Joke.findByAuthorName", query = "SELECT j FROM Joke j WHERE j.authorName = :authorName"),
-    @NamedQuery(name = "Joke.findByReference", query = "SELECT j FROM Joke j WHERE j.reference = :reference"),
-    @NamedQuery(name = "Joke.findByRating", query = "SELECT j FROM Joke j WHERE j.rating = :rating"),
-    @NamedQuery(name = "Joke.findCount", query = "SELECT COUNT(j) FROM Joke j")
+    @NamedQuery(name = "Jokes.deleteAllRows", query = "DELETE FROM Jokes"),
+    @NamedQuery(name = "Jokes.findAll", query = "SELECT j FROM Jokes j"),
+    @NamedQuery(name = "Jokes.findById", query = "SELECT j FROM Jokes j WHERE j.id = :id"),
+    @NamedQuery(name = "Jokes.findByJokesLine", query = "SELECT j FROM Jokes j WHERE j.JokesLine = :JokesLine"),
+    @NamedQuery(name = "Jokes.findByAuthorName", query = "SELECT j FROM Jokes j WHERE j.authorName = :authorName"),
+    @NamedQuery(name = "Jokes.findByReference", query = "SELECT j FROM Jokes j WHERE j.reference = :reference"),
+    @NamedQuery(name = "Jokes.findByRating", query = "SELECT j FROM Jokes j WHERE j.rating = :rating"),
+    @NamedQuery(name = "Jokes.findCount", query = "SELECT COUNT(j) FROM Jokes j")
 })
-public class Joke implements Serializable {
+public class Jokes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String jokeLine;
+    private String JokesLine;
     private String reference;
     private String type;
     private String authorName;
     private int rating;
 
-    public Joke() {
+    public Jokes() {
     }
 
-    public Joke(String jokeLine, String reference, String type, String authorName, int rating) {
-        this.jokeLine = jokeLine;
+    public Jokes(String JokesLine, String reference, String type, String authorName, int rating) {
+        this.JokesLine = JokesLine;
         this.reference = reference;
         this.type = type;
         this.authorName = authorName;
@@ -52,12 +52,12 @@ public class Joke implements Serializable {
         this.rating = rating;
     }
 
-    public String getJokeLine() {
-        return jokeLine;
+    public String getJokesLine() {
+        return JokesLine;
     }
 
-    public void setJokeLine(String jokeLine) {
-        this.jokeLine = jokeLine;
+    public void setJokesLine(String JokesLine) {
+        this.JokesLine = JokesLine;
     }
 
     public String getReference() {

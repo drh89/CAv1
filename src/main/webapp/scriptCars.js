@@ -2,7 +2,7 @@
 
 var table = document.getElementById("table");
 var btnAll = document.getElementById("btnAll");
-var dom = "http://localhost:8080/CA1/api/cars";
+var dom = "http://localhost:8080/CAv1/api/cars";
 
 
 

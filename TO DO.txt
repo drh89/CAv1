@@ -2,7 +2,7 @@
 			   ##SETUP##
 
 
-- Setup af databaser
+- Setup af databaser.
 	(Setup af samme miljø på alle pcer i gruppe)
 	(Samme database navne etc.)
 

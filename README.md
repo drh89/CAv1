@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Mutestock/CA1.png)](https://travis-ci.org/Mutestock/CA1)
+[![Build Status](https://travis-ci.org/Mutestock/CAv1.png)](https://travis-ci.org/Mutestock/CAv1)
 
 
 
@@ -7,22 +7,22 @@
 DB INFO: 
 
 
-Database name: CA1DB
+Database name: CAv1DB
 
-Database_test name: CA1DB_test
+Database_test name: CAv1DB_test
 
 ##Links
 
 
 ###Deployment links:
 
-https://mutezone.site/CA1/
+https://mutezone.site/CAv1/
 
 
 ###CI-Travis:
-https://travis-ci.org/Mutestock/CA1
+https://travis-ci.org/Mutestock/CAv1
 
 
 ###Github:
-https://github.com/Mutestock/CA1/
+https://github.com/Mutestock/CAv1/
 

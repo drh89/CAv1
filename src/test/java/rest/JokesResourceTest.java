@@ -1,6 +1,6 @@
 package rest;
 
-import entities.Joke;
+import entities.Jokes;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -24,12 +24,12 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class JokeResourceTest {
+public class JokesResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
     //Read this line from a settings-file  since used several places
-    private static final String TEST_DB = "jdbc:mysql://localhost:3307/CA1DB_test";
+    private static final String TEST_DB = "jdbc:mysql://localhost:3307/CAv1DB_test";
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -69,9 +69,9 @@ public class JokeResourceTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(new Joke("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Joke", "cake" ,(byte)1));
-            em.persist(new Joke("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Joke", "moronic" ,(byte)1));
+            em.createNamedQuery("Jokes.deleteAllRows").executeUpdate();
+            em.persist(new Jokes("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Jokes", "cake" ,(byte)1));
+            em.persist(new Jokes("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Jokes", "moronic" ,(byte)1));
 
             em.getTransaction().commit();
         } finally {
@@ -82,21 +82,21 @@ public class JokeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/joke").then().statusCode(200);
+        given().when().get("/Jokes").then().statusCode(200);
     }
     
     @Test
     public void testGetAll() throws Exception
     {
         System.out.println("testing all");
-        given().when().get("/joke/all").then().statusCode(200);
+        given().when().get("/Jokes/all").then().statusCode(200);
     }
 
     @Test
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/joke/count").then()
+                .get("/Jokes/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(2));

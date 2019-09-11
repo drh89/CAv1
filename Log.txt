@@ -2,7 +2,7 @@ Monday 09-09-19
 
 	Mute/Svensmark:
 		Test environment preparation
-		Joke entity
+		Jokes entity
 		Member entity
 		CI-Travis
 		Github Repository setup
@@ -23,9 +23,9 @@ Tuesday 10-09-19
 		Javascript for index.html (member task)	
 	Mute:
 		Basic HTML / Javascript setup
-		JokeInterface
-		JokeFacade
-		JokeDTO
-		JokeResources
-		JokeFacadeTests
-		JokeResourceTests
+		JokesInterface
+		JokesFacade
+		JokesDTO
+		JokesResources
+		JokesFacadeTests
+		JokesResourceTests

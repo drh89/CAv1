@@ -1,7 +1,7 @@
 package facades;
 
 import utils.EMF_Creator;
-import entities.Joke;
+import entities.Jokes;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,23 +22,23 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class JokeFacadeTest {
+public class JokesFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static JokeFacade FACADE;
+    private static JokesFacade FACADE;
 
-    public JokeFacadeTest() {
+    public JokesFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactory(
                 "pu",
-                "jdbc:mysql://localhost:3307/CA1DB_test",
+                "jdbc:mysql://localhost:3307/CAv1DB_test",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-        FACADE = JokeFacade.getJokeFacade(emf);
+        FACADE = JokesFacade.getJokesFacade(emf);
     }
 
     /*   **** HINT **** 
@@ -50,7 +50,7 @@ public class JokeFacadeTest {
     @BeforeAll
     public static void setUpClassV2() {
         emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
-        FACADE = JokeFacade.getJokeFacade(emf);
+        FACADE = JokesFacade.getJokesFacade(emf);
     }
 
     @AfterAll
@@ -65,19 +65,19 @@ public class JokeFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Jokes.deleteAllRows").executeUpdate();
             em.getTransaction().commit();
 
             em.getTransaction().begin();
-            em.persist(new Joke("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Joke", "cake", 1));
+            em.persist(new Jokes("Who came first? I did. Feelsbadman", "Chicken and egg", "Bad Jokes", "cake", 1));
             em.getTransaction().commit();
             
             em.getTransaction().begin();
-            em.persist(new Joke("Why don’t crabs donate? Because they’re shellfish.", "None", "Bad Joke", "derpy", 2));
+            em.persist(new Jokes("Why don’t crabs donate? Because they’re shellfish.", "None", "Bad Jokes", "derpy", 2));
             em.getTransaction().commit();
 
             em.getTransaction().begin();
-            em.persist(new Joke("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Joke", "moronic", 1));
+            em.persist(new Jokes("Knock knock. Who's there. Who. Who who?. You're an owl! HAHAHA", "Knock Knock", "Cringy Jokes", "moronic", 1));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -91,30 +91,30 @@ public class JokeFacadeTest {
 
     // TODO: Delete or change this method 
     @Test
-    public void tesGetJokeCount() {
-        assertEquals(3, FACADE.getJokeCount());
+    public void tesGetJokesCount() {
+        assertEquals(3, FACADE.getJokesCount());
     }
 
     @Test
-    public void testGetAllJokes() {
-        assertEquals("Bad Joke", FACADE.getAllJokes().get(0).getType());
+    public void testGetAllJokess() {
+        assertEquals("Bad Jokes", FACADE.getAllJokess().get(0).getType());
     }
 
     @Test
     public void testGetByID() {
-        assertEquals("Bad Joke", FACADE.getJokeById(FACADE.getAllJokes().get(0).getId()).getType());
+        assertEquals("Bad Jokes", FACADE.getJokesById(FACADE.getAllJokess().get(0).getId()).getType());
     }
 
     @Test
     public void testGetDTOByID() {
-        assertEquals("Cringy Joke", FACADE.getJokeDTOByID(FACADE.getAllJokes().get(2).getId()).getType());
+        assertEquals("Cringy Jokes", FACADE.getJokesDTOByID(FACADE.getAllJokess().get(2).getId()).getType());
     }
 
     // #### Tests if there is an occurence of the randomly selected value
     @Test
-    public void testGetRandomByGetAllJokes() {
+    public void testGetRandomByGetAllJokess() {
         assertEquals(true,
-                FACADE.getAllJokes().stream().anyMatch(o -> o.getType().equals("Cringy Joke")
+                FACADE.getAllJokess().stream().anyMatch(o -> o.getType().equals("Cringy Jokes")
                 ));
     }
 
@@ -125,9 +125,9 @@ public class JokeFacadeTest {
     // #### Alternative would be logger                                                 ####
     @Test
     public void testRandomMultipleValues() {
-        Set<Joke> arr = new HashSet<Joke>();
+        Set<Jokes> arr = new HashSet<Jokes>();
         for (int i = 0; i < 100; i++) {
-            Joke j = FACADE.getRandomJoke();
+            Jokes j = FACADE.getRandomJokes();
             if (arr.contains(null)) {
                 fail("Set null");
             } else if (arr.size() > 1) {
@@ -145,13 +145,13 @@ public class JokeFacadeTest {
 
     @Test
     public void testJkDTOGetAll() {
-        assertEquals("Bad Joke", FACADE.getAllJokesDTO().get(0).getType());
+        assertEquals("Bad Jokes", FACADE.getAllJokessDTO().get(0).getType());
     }
 
     @Test
-    public void testJkDTOGetJokesByType() {
-        assertEquals("Chicken and egg", FACADE.getJokesDTOByType("Bad Joke").get(0).getReference());
-        assertEquals(2, FACADE.getJokesDTOByType("Bad Joke").size());
+    public void testJkDTOGetJokessByType() {
+        assertEquals("Chicken and egg", FACADE.getJokessDTOByType("Bad Jokes").get(0).getReference());
+        assertEquals(2, FACADE.getJokessDTOByType("Bad Jokes").size());
     }
 
 }

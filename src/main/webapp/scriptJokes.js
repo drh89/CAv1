@@ -1,4 +1,4 @@
-fetch("/CA1/api/joke/all")
+fetch("/CAv1/api/Jokes/all")
         .then(res => res.json())
         .then(data => {
             console.log("data", data);

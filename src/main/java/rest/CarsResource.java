@@ -4,10 +4,10 @@ import DTO.CarsDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Cars;
-import entities.Joke;
+import entities.Jokes;
 import facades.CarsFacade;
 import utils.EMF_Creator;
-import facades.JokeFacade;
+import facades.JokesFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -27,7 +27,7 @@ public class CarsResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
                 "pu",
-                "jdbc:mysql://localhost:3307/CA1DB",
+                "jdbc:mysql://localhost:3307/CAv1DB",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
@@ -80,7 +80,7 @@ public class CarsResource {
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void update(Joke entity, @PathParam("id") int id) {
+    public void update(Jokes entity, @PathParam("id") int id) {
         throw new UnsupportedOperationException();
     }
 }

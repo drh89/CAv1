@@ -5,7 +5,7 @@
  */
 package DTO;
 
-import entities.Joke;
+import entities.Jokes;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,22 +16,22 @@ import javax.persistence.Id;
  *
  * @author Henning
  */
-public class JokeDTO implements Serializable {
+public class JokesDTO implements Serializable {
 
     private Long id;
-    private String jokeLine;
+    private String JokesLine;
     private String reference;
     private String type;
     private String authorName;
     private int rating;
     
-    public JokeDTO()
+    public JokesDTO()
     {
         
     }
 
-    public JokeDTO(Joke jk) {
-        this.jokeLine = jk.getJokeLine();
+    public JokesDTO(Jokes jk) {
+        this.JokesLine = jk.getJokesLine();
         this.reference = jk.getReference();
         this.type = jk.getType();
         this.authorName = jk.getAuthorName();
@@ -46,12 +46,12 @@ public class JokeDTO implements Serializable {
         this.id = id;
     }
 
-    public String getJokeLine() {
-        return jokeLine;
+    public String getJokesLine() {
+        return JokesLine;
     }
 
-    public void setJokeLine(String jokeLine) {
-        this.jokeLine = jokeLine;
+    public void setJokesLine(String JokesLine) {
+        this.JokesLine = JokesLine;
     }
 
     public String getReference() {

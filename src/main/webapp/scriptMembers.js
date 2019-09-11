@@ -5,7 +5,7 @@
  */
 
 
-fetch("/CA1/api/member/all")
+fetch("/CAv1/api/member/all")
         .then(res => res.json())
         .then(data => {
             console.log("data", data);
@@ -19,7 +19,7 @@ btn.addEventListener("click", reloadData);
 
 
 function reloadData() {
-    fetch("/CA1/api/member/all")
+    fetch("/CAv1/api/member/all")
             .then(res => res.json())
             .then(data => {
                 console.log("data", data);
