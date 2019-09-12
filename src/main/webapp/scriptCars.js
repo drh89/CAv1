@@ -2,23 +2,15 @@
 
 var table = document.getElementById("table");
 var btnAll = document.getElementById("btnAll");
-var btnSortPrice = document.getElementById("btnSortPrice");
-var btnSortMake = document.getElementById("btnSortMake");
-var btnSortModel = document.getElementById("btnSortModel");
-var btnSortModelYear = document.getElementById("btnSortModelYear");
-var btnSortRegistrationDate = document.getElementById("btnSortRegistration");
+var btnFilter = document.getElementById("btnFilter");
+var input = document.getElementById("input");
 var url = "http://localhost:8080/CAv1/api/cars/all";
 
 
 
 
 btnAll.addEventListener("click", getAllCars);
-//btnSortPrice.addEventListener("click", sortByPrice);
-//btnSortMake.addEventListener("click", sortByMake);
-//btnSortModel.addEventListener("click", sortByModel);
-//btnSortModelYear.addEventListener("click", sortByModelYear);
-//btnSortRegistrationDate.addEventListener("click", sortByRegistrationDate);
-
+btnFilter.addEventListener("click",);
 
 table.addEventListener("click", function (e) {
     var target = e.target;
@@ -98,18 +90,6 @@ function sortByMileage() {
             })
 
 }
-
-
-
-
-function compareProperty(a, b) {
-    return a.localeCompare(b);
-}
-
-function sortMakeModelPrice(a, b) {
-    return compareProperty(a.make, b.make) || compareProperty(a.model, b.model) || a.price - b.price;
-}
-
 
 function sortByRegistrationDate() {
     event.preventDefault();
@@ -215,6 +195,16 @@ function getAllCars() {
 }
 
 
+function compareProperty(a, b) {
+    return a.localeCompare(b);
+}
+
+function sortMakeModelPrice(a, b) {
+    return compareProperty(a.make, b.make) || compareProperty(a.model, b.model) || a.price - b.price;
+}
+
+
+
 function generateTable(data) {
     var newData = data.map(function (c) {
         return "<tr><td>" + c.make + "</td>" + "<td>" + c.model + "</td>" +
@@ -222,9 +212,9 @@ function generateTable(data) {
                 "<td>" + c.horsepower + "</td>" + "<td>" + c.mileage + "</td>" +
                 "<td>" + c.doors + "</td>" + "<td>" + c.price + "</td></tr>";
     });
-    return "<tr><th id = \"make\">Make</th>" + "<th id = \"model\">Model</th>" + "<th id = \"registration\">Registration Date</th>" +
-            "<th id = \"modelyear\">Model Year</th>" + "<th id = \"horsepower\">Horsepower</th>" +
-            "<th id = \"mileage\">Mileage</th>" + "<th id = \"doors\">Doors</th>" + "<th id = \"price\">Price</th></tr>" + newData.join("");
+    return "<tr><th><img id = \"make\" src = \"Make.png\"></img></th>" + "<th><img id = \"model\" src = \"Model.png\"></img></th>" + "<th><img id = \"registration\" src = \"Registration Date.png\"></img></th>" +
+            "<th><img id = \"modelyear\" src = \"Model Year.png\"></img></th>" + "<th><img id = \"horsepower\" src = \"Horsepower.png\"></img></th>" +
+            "<th><img id = \"mileage\" src = \"Milage.png\"></img></th>" + "<th><img id = \"doors\" src = \"Doors.png\"></img></th>" + "<th><img id = \"price\" src = \"Price.png\"></img></th></tr>" + newData.join("");
 
 
 }

@@ -13,9 +13,21 @@ and open the template in the editor.
             table {
                 border-collapse: collapse;
             }
-            td, th {
+            td{
                 border: 2px solid blue;
-            }</style>
+                
+                    
+            }
+            th{
+                
+            }
+        
+            img{
+                width: 90%;
+                height: 30%;
+                
+            }
+            </style>
     </head>
     <body>
         <form method="GET">
@@ -26,11 +38,12 @@ and open the template in the editor.
             
         </table>
         <button id="btnAll">Show All Cars</button>
-<!--        <button id="btnSortPrice">Sort By Price</button>
-        <button id="btnSortMake">Sort By Make</button>
-        <button id="btnSortModel">Sort By Model</button>
-        <button id="btnSortModelYear">Sort By Model Year</button>
-        <button id="btnSortRegistration">Sort By Registration Date</button>-->
+        <br>
+        <br>
+        <input type="text" id="input" placeholder="Show only">
+        <br>
+        <button id="btnFilter">Show</button>
+        
         <script src="scriptCars.js"></script>
         </form>
     </body>
