@@ -22,7 +22,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name= "cars.getAll", query ="SELECT c FROM Cars c")
+    @NamedQuery(name= "cars.getAll", query ="SELECT c FROM Cars c"),
+    @NamedQuery(name= "cars.make", query = "SELECT c FROM Cars c WHERE c.make LIKE :name")
 })
 public class Cars implements Serializable {
 

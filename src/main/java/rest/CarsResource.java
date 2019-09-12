@@ -60,6 +60,16 @@ public class CarsResource {
         });
         return Response.ok().entity(GSON.toJson(carsDTO)).build();
     }
+    @Path("/makename/{name}")
+    @GET
+    public Response getCarsByMake(@PathParam("name")String name){
+        List<Cars> cars = FACADE.getCarsByMake(name);
+        List<CarsDTO> carsDTO = new ArrayList();
+        cars.forEach((car) -> {
+            carsDTO.add(new CarsDTO(car));
+        });
+        return Response.ok().entity(GSON.toJson(carsDTO)).build();
+    }
     
     @GET
     @Path("/populate")

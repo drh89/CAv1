@@ -45,6 +45,14 @@ public class CarsFacade {
         List<Cars> cars = tq.getResultList();
         return cars;
     }
+    
+    public List<Cars> getCarsByMake(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery tq = em.createNamedQuery("cars.make", Cars.class);
+        tq.setParameter("name",name);
+        List<Cars> cars = (List) tq.getResultList();
+        return cars;
+    }
 
     public void populate(Cars car) {
         EntityManager em = getEntityManager();

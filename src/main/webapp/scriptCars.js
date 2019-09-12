@@ -4,13 +4,13 @@ var table = document.getElementById("table");
 var btnAll = document.getElementById("btnAll");
 var btnFilter = document.getElementById("btnFilter");
 var input = document.getElementById("input");
-var url = "http://localhost:8080/CAv1/api/cars/all";
+var dom = "http://localhost:8080/CAv1/api/cars";
 
 
 
 
 btnAll.addEventListener("click", getAllCars);
-btnFilter.addEventListener("click",);
+btnFilter.addEventListener("click", getCarByMake);
 
 table.addEventListener("click", function (e) {
     var target = e.target;
@@ -38,13 +38,32 @@ table.addEventListener("click", function (e) {
     if (target.id === "price") {
         sortByPrice();
     }
-})
+});
+
+function getCarByMake() {
+    event.preventDefault();
+    var conf = {method: "get"};
+    var url = dom + "/makename/" + input.value;
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return sortMakeModelPrice(a, b);
+                });
+                var html = generateTable(data);
+                table.innerHTML = html;
+
+            })
+
+}
+
 
 
 function sortByHorsepower() {
     event.preventDefault();
     var conf = {method: "get"};
-
+    var url = dom + "/all";
     var promise = fetch(url, conf);
 
     promise.then(res => res.json())
@@ -54,13 +73,15 @@ function sortByHorsepower() {
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-            })
+            });
 
 }
 
 function sortByDoors() {
     event.preventDefault();
     var conf = {method: "get"};
+    var url = dom + "/all";
+
 
     var promise = fetch(url, conf);
 
@@ -77,6 +98,8 @@ function sortByDoors() {
 function sortByMileage() {
     event.preventDefault();
     var conf = {method: "get"};
+    var url = dom + "/all";
+
 
     var promise = fetch(url, conf);
 
@@ -94,6 +117,7 @@ function sortByMileage() {
 function sortByRegistrationDate() {
     event.preventDefault();
     var conf = {method: "get"};
+    var url = dom + "/all";
 
     var promise = fetch(url, conf);
 
@@ -111,6 +135,7 @@ function sortByRegistrationDate() {
 function sortByModelYear() {
     event.preventDefault();
     var conf = {method: "get"};
+    var url = dom + "/all";
 
     var promise = fetch(url, conf);
 
@@ -128,6 +153,7 @@ function sortByMake() {
     event.preventDefault();
 
     var conf = {method: "get"};
+    var url = dom + "/all";
 
     var promise = fetch(url, conf);
 
@@ -146,6 +172,8 @@ function sortByModel() {
     event.preventDefault();
 
     var conf = {method: "get"};
+    var url = dom + "/all";
+
 
     var promise = fetch(url, conf);
 
@@ -165,6 +193,7 @@ function sortByPrice() {
     event.preventDefault();
 
     var conf = {method: "get"};
+    var url = dom + "/all";
 
     var promise = fetch(url, conf);
 
@@ -183,6 +212,7 @@ function getAllCars() {
     event.preventDefault();
 
     var conf = {method: "get"};
+    var url = dom + "/all";
 
     var promise = fetch(url, conf);
 
