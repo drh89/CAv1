@@ -75,7 +75,7 @@ public class MembersResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String deleteAllMembers() {
         FACADE.deleteAllMembers();
-        FACADE.addMember(new Members("","",0));
+        FACADE.addMember(new Members("","",""));
         return "{\"msg\":\"Your database has been cleared..\"}";
     }
 
