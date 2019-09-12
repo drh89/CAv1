@@ -1,4 +1,7 @@
 Monday 09-09-19
+	
+				
+		
 
 	Mute/Svensmark:
 		Test environment preparation
@@ -31,6 +34,20 @@ Tuesday 10-09-19
 		JokesFacadeTests
 		JokesResourceTests
 
+	Drh89:
+		Cars entity
+		CarsFacade  
+		CarsResource
+		scriptCars
+		
+	
+	RangerRyge:
+		Cars entity
+		CarsFacade  
+		CarsResource
+		carsHtml
+					
+
 
 Wednesday 11-09-19
 
@@ -44,6 +61,12 @@ Wednesday 11-09-19
 	Mute:
 		Jokes Javascript
 		Jokes HTML
+	
+	Drh89:
+		scriptCars
+	
+	RangerRyge:
+		carsHtml
 		
 Thursdag 12-09-19
 
@@ -51,6 +74,11 @@ Thursdag 12-09-19
 		Support
 	Mute:
 		MySQL Error Handling
+	
+	Drh89:
+		scriptCars
+		carsHtml
+	
 		
 	
 	
