@@ -69,11 +69,11 @@ public class MemberFacadeTest {
             em.getTransaction().commit();
             
             em.getTransaction().begin();
-            em.persist(new Members("Turqoise with a hint of yellowgreen", "Meep", 0));
+            em.persist(new Members("Turqoise with a hint of yellowgreen", "Meep", ""));
             em.getTransaction().commit();
             
             em.getTransaction().begin();
-            em.persist(new Members("Scarlet", "Doomlord Bob", 1));
+            em.persist(new Members("Scarlet", "Doomlord Bob", ""));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -93,7 +93,7 @@ public class MemberFacadeTest {
         List l = query.getResultList();
         int before = l.size();
 
-        Members member = new Members("AddMember", "Test", 10);
+        Members member = new Members("AddMember", "Test", "");
         facade.addMember(member);
 
         query = em.createQuery("SELECT m FROM Members m", Members.class);
@@ -110,7 +110,7 @@ public class MemberFacadeTest {
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         List l = query.getResultList();
         int before = l.size();
-        Members member = new Members("DeleteMember", "Test", 10);
+        Members member = new Members("DeleteMember", "Test", "a");
 
         em.getTransaction().begin();
         em.persist(member);

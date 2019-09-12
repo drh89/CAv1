@@ -6,6 +6,7 @@ var btnSortPrice = document.getElementById("btnSortPrice");
 var btnSortMake = document.getElementById("btnSortMake");
 var btnSortModel = document.getElementById("btnSortModel");
 var btnSortModelYear = document.getElementById("btnSortModelYear");
+var btnSortRegistrationDate = document.getElementById("btnSortRegistration");
 var url = "http://localhost:8080/CAv1/api/cars/all";
 
 
@@ -16,6 +17,7 @@ btnSortPrice.addEventListener("click", sortByPrice);
 btnSortMake.addEventListener("click", sortByMake);
 btnSortModel.addEventListener("click", sortByModel);
 btnSortModelYear.addEventListener("click", sortByModelYear);
+btnSortRegistrationDate.addEventListener("click", sortByRegistrationDate);
 
 
 function compareProperty(a, b) {
@@ -25,6 +27,24 @@ function compareProperty(a, b) {
 function sortMakeModelPrice(a, b) {
     return compareProperty(a.make, b.make) || compareProperty(a.model, b.model) || a.price - b.price;
 }
+
+
+function sortByRegistrationDate(){
+    event.preventDefault();
+    var conf = {method: "get"};
+    
+    var promise = fetch(url, conf);
+    
+    promise.then(res => res.json())
+            .then(function(data){
+                var newData = data.sort(function(a,b){
+                    return compareProperty(a.registrationDate,b.registrationDate);
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+    })
+}
+
 
 function sortByModelYear(){
     event.preventDefault();

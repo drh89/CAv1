@@ -84,8 +84,8 @@ public class MembersResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Members.deleteAllRows").executeUpdate();
-            em.persist(new Members("Meep", "Turqoise", 0));
-            em.persist(new Members("Doomlord Bob", "Scarlet", 1));
+            em.persist(new Members("Meep", "Turqoise", ""));
+            em.persist(new Members("Doomlord Bob", "Scarlet", ""));
 
             em.getTransaction().commit();
         } finally {
