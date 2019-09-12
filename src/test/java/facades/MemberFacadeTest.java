@@ -69,19 +69,11 @@ public class MemberFacadeTest {
             em.getTransaction().commit();
             
             em.getTransaction().begin();
-<<<<<<< HEAD
-            em.persist(new Members("Turqoise with a hint of yellowgreen", "Meep", "asdf32"));
-            em.getTransaction().commit();
-            
-            em.getTransaction().begin();
-            em.persist(new Members("Scarlet", "Doomlord Bob", "bj69"));
-=======
             em.persist(new Members("Turqoise with a hint of yellowgreen", "Meep", ""));
             em.getTransaction().commit();
             
             em.getTransaction().begin();
             em.persist(new Members("Scarlet", "Doomlord Bob", ""));
->>>>>>> c5203fd1df9609b01860179519cdb1cd33ba8409
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -101,11 +93,7 @@ public class MemberFacadeTest {
         List l = query.getResultList();
         int before = l.size();
 
-<<<<<<< HEAD
-        Members member = new Members("AddMember", "Test", "av23");
-=======
         Members member = new Members("AddMember", "Test", "");
->>>>>>> c5203fd1df9609b01860179519cdb1cd33ba8409
         facade.addMember(member);
 
         query = em.createQuery("SELECT m FROM Members m", Members.class);
@@ -122,11 +110,7 @@ public class MemberFacadeTest {
         TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
         List l = query.getResultList();
         int before = l.size();
-<<<<<<< HEAD
-        Members member = new Members("DeleteMember", "Test", "kk12");
-=======
         Members member = new Members("DeleteMember", "Test", "a");
->>>>>>> c5203fd1df9609b01860179519cdb1cd33ba8409
 
         em.getTransaction().begin();
         em.persist(member);
