@@ -4,13 +4,16 @@ var table = document.getElementById("table");
 var btnAll = document.getElementById("btnAll");
 var btnFilter = document.getElementById("btnFilter");
 var input = document.getElementById("input");
+var btnPrice = document.getElementById("btnPrice");
+var inputPrice = document.getElementById("inputPrice");
 var dom = "http://localhost:8080/CAv1/api/cars";
 
 
 
 
 btnAll.addEventListener("click", getAllCars);
-btnFilter.addEventListener("click", getCarByMake);
+btnFilter.addEventListener("click", getCarsByMake);
+btnPrice.addEventListener("click", getCarsByPrice);
 
 table.addEventListener("click", function (e) {
     var target = e.target;
@@ -40,7 +43,27 @@ table.addEventListener("click", function (e) {
     }
 });
 
-function getCarByMake() {
+
+function getCarsByPrice() {
+    event.preventDefault();
+    var conf = {method: "get"};
+    var url = dom + "/all";
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.filter(c => c.price <= inputPrice.value);
+                newData.sort(function(a,b){
+                   return sortMakeModelPrice(a,b); 
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            });
+}
+
+
+// "Filter" SQL
+function getCarsByMake() {
     event.preventDefault();
     var conf = {method: "get"};
     var url = dom + "/makename/" + input.value;
@@ -51,10 +74,10 @@ function getCarByMake() {
                 var newData = data.sort(function (a, b) {
                     return sortMakeModelPrice(a, b);
                 });
-                var html = generateTable(data);
+                var html = generateTable(newData);
                 table.innerHTML = html;
 
-            })
+            });
 
 }
 
@@ -92,7 +115,7 @@ function sortByDoors() {
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-            })
+            });
 
 }
 function sortByMileage() {
@@ -110,7 +133,7 @@ function sortByMileage() {
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-            })
+            });
 
 }
 
@@ -128,7 +151,7 @@ function sortByRegistrationDate() {
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-            })
+            });
 }
 
 
@@ -146,7 +169,7 @@ function sortByModelYear() {
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-            })
+            });
 }
 
 function sortByMake() {
