@@ -19,9 +19,6 @@ function buttonEventFetch() {
 }
 
 
-
-
-
 function getFetchDataAll() {
     fetch("/CAv1/api/Jokes/all")
             .then(res => res.json())
