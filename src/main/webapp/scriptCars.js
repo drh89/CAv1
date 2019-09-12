@@ -13,11 +13,93 @@ var url = "http://localhost:8080/CAv1/api/cars/all";
 
 
 btnAll.addEventListener("click", getAllCars);
-btnSortPrice.addEventListener("click", sortByPrice);
-btnSortMake.addEventListener("click", sortByMake);
-btnSortModel.addEventListener("click", sortByModel);
-btnSortModelYear.addEventListener("click", sortByModelYear);
-btnSortRegistrationDate.addEventListener("click", sortByRegistrationDate);
+//btnSortPrice.addEventListener("click", sortByPrice);
+//btnSortMake.addEventListener("click", sortByMake);
+//btnSortModel.addEventListener("click", sortByModel);
+//btnSortModelYear.addEventListener("click", sortByModelYear);
+//btnSortRegistrationDate.addEventListener("click", sortByRegistrationDate);
+
+
+table.addEventListener("click", function (e) {
+    var target = e.target;
+    if (target.id === "make") {
+        sortByMake();
+    }
+    if (target.id === "model") {
+        sortByModel();
+    }
+    if (target.id === "registration") {
+        sortByRegistrationDate();
+    }
+    if (target.id === "modelyear") {
+        sortByModelYear();
+    }
+    if (target.id === "horsepower") {
+        sortByHorsepower();
+    }
+    if (target.id === "mileage") {
+        sortByMileage();
+    }
+    if (target.id === "doors") {
+        sortByDoors();
+    }
+    if (target.id === "price") {
+        sortByPrice();
+    }
+})
+
+
+function sortByHorsepower() {
+    event.preventDefault();
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return a.horsepower - b.horsepower;
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            })
+
+}
+
+function sortByDoors() {
+    event.preventDefault();
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return a.doors - b.doors;
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            })
+
+}
+function sortByMileage() {
+    event.preventDefault();
+    var conf = {method: "get"};
+
+    var promise = fetch(url, conf);
+
+    promise.then(res => res.json())
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return a.mileage - b.mileage;
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+            })
+
+}
+
+
 
 
 function compareProperty(a, b) {
@@ -29,37 +111,37 @@ function sortMakeModelPrice(a, b) {
 }
 
 
-function sortByRegistrationDate(){
+function sortByRegistrationDate() {
     event.preventDefault();
     var conf = {method: "get"};
-    
+
     var promise = fetch(url, conf);
-    
+
     promise.then(res => res.json())
-            .then(function(data){
-                var newData = data.sort(function(a,b){
-                    return compareProperty(a.registrationDate,b.registrationDate);
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
+                    return compareProperty(a.registrationDate, b.registrationDate);
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-    })
+            })
 }
 
 
-function sortByModelYear(){
+function sortByModelYear() {
     event.preventDefault();
     var conf = {method: "get"};
-    
+
     var promise = fetch(url, conf);
-    
+
     promise.then(res => res.json())
-            .then(function(data){
-                var newData = data.sort(function(a,b){
+            .then(function (data) {
+                var newData = data.sort(function (a, b) {
                     return a.modelYear - b.modelYear;
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
-    })
+            })
 }
 
 function sortByMake() {
@@ -133,10 +215,6 @@ function getAllCars() {
 }
 
 
-
-
-
-
 function generateTable(data) {
     var newData = data.map(function (c) {
         return "<tr><td>" + c.make + "</td>" + "<td>" + c.model + "</td>" +
@@ -144,9 +222,9 @@ function generateTable(data) {
                 "<td>" + c.horsepower + "</td>" + "<td>" + c.mileage + "</td>" +
                 "<td>" + c.doors + "</td>" + "<td>" + c.price + "</td></tr>";
     });
-    return "<tr><th>Make</th>" + "<th>Model</th>" + "<th>Registration Date</th>" +
-            "<th>Model Year</th>" + "<th>Horsepower</th>" +
-            "<th>Mileage</th>" + "<th>Doors</th>" + "<th>Price</th></tr>" + newData.join("");
+    return "<tr><th id = \"make\">Make</th>" + "<th id = \"model\">Model</th>" + "<th id = \"registration\">Registration Date</th>" +
+            "<th id = \"modelyear\">Model Year</th>" + "<th id = \"horsepower\">Horsepower</th>" +
+            "<th id = \"mileage\">Mileage</th>" + "<th id = \"doors\">Doors</th>" + "<th id = \"price\">Price</th></tr>" + newData.join("");
 
 
 }
