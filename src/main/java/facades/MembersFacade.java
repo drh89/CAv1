@@ -119,12 +119,10 @@ public class MembersFacade implements MembersInterface {
 
     @Override
     public void populateMembers() {
-        addMember(new Members("Grøn", "Sven", 1));
-        addMember(new Members("Blå", "Bandit", 2));
-        addMember(new Members("Hvid", "Bro", 3));
-        addMember(new Members("Lilla", "Sveske", 4));
-        addMember(new Members("Rød", "Bandit", 5));
-        addMember(new Members("Gul", "Abekat", 6));
+        addMember(new Members("Red", "Svense", "es123"));
+        addMember(new Members("Red", "Ranger", "cr123" ));
+        addMember(new Members("Red", "drh", "dh123"));
+        addMember(new Members("Red", "mute", "hw98"));
     }
 
     @Override

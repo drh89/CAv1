@@ -13,7 +13,7 @@ import entities.Members;
 public class MembersDTO {
     
     private String student_name;
-    private int student_id;
+    private String student_id;
     private String student_color;
 
     public MembersDTO(Members member) {
@@ -26,7 +26,7 @@ public class MembersDTO {
         return student_name;
     }
 
-    public int getStudent_id() {
+    public String getStudent_id() {
         return student_id;
     }
 

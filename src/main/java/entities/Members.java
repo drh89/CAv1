@@ -6,6 +6,8 @@
 package entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,16 +29,20 @@ public class Members implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     private Long id;
+    @Column(name="color")
     private String color;
+    @Column(name="name")
     private String name;
-    private int studentID;
+    @Column(name="studentID")
+    private String studentID;
     
 
     public Members() {
     }
 
-    public Members(String color, String name, int studentID) {
+    public Members(String color, String name, String studentID) {
         this.color = color;
         this.name = name;
         this.studentID = studentID;
@@ -50,11 +56,11 @@ public class Members implements Serializable {
         this.name = name;
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
 
