@@ -5,7 +5,8 @@ var btnAll = document.getElementById("btnAll");
 var btnSortPrice = document.getElementById("btnSortPrice");
 var btnSortMake = document.getElementById("btnSortMake");
 var btnSortModel = document.getElementById("btnSortModel");
-var dom = "http://localhost:8080/CA1/api/cars";
+var btnSortModelYear = document.getElementById("btnSortModelYear");
+var url = "http://localhost:8080/CAv1/api/cars/all";
 
 
 
@@ -14,13 +15,36 @@ btnAll.addEventListener("click", getAllCars);
 btnSortPrice.addEventListener("click", sortByPrice);
 btnSortMake.addEventListener("click", sortByMake);
 btnSortModel.addEventListener("click", sortByModel);
+btnSortModelYear.addEventListener("click", sortByModelYear);
 
 
+function compareProperty(a, b) {
+    return a.localeCompare(b);
+}
 
+function sortMakeModelPrice(a, b) {
+    return compareProperty(a.make, b.make) || compareProperty(a.model, b.model) || a.price - b.price;
+}
+
+function sortByModelYear(){
+    event.preventDefault();
+    var conf = {method: "get"};
+    
+    var promise = fetch(url, conf);
+    
+    promise.then(res => res.json())
+            .then(function(data){
+                var newData = data.sort(function(a,b){
+                    return a.modelYear - b.modelYear;
+                });
+                var html = generateTable(newData);
+                table.innerHTML = html;
+    })
+}
 
 function sortByMake() {
     event.preventDefault();
-    var url = dom + "/all";
+
     var conf = {method: "get"};
 
     var promise = fetch(url, conf);
@@ -28,7 +52,7 @@ function sortByMake() {
     promise.then(res => res.json())
             .then(function (data) {
                 var newData = data.sort(function (a, b) {
-                    return ("" + a.make).localeCompare(b.make);
+                    return sortMakeModelPrice(a, b);
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
@@ -38,7 +62,7 @@ function sortByMake() {
 
 function sortByModel() {
     event.preventDefault();
-    var url = dom + "/all";
+
     var conf = {method: "get"};
 
     var promise = fetch(url, conf);
@@ -46,7 +70,7 @@ function sortByModel() {
     promise.then(res => res.json())
             .then(function (data) {
                 var newData = data.sort(function (a, b) {
-                    return ("" + a.model).localeCompare(b.model);
+                    return compareProperty(a.model, b.model);
                 });
                 var html = generateTable(newData);
                 table.innerHTML = html;
@@ -55,14 +79,9 @@ function sortByModel() {
 
 
 
-
-
-
-
-
 function sortByPrice() {
     event.preventDefault();
-    var url = dom + "/all";
+
     var conf = {method: "get"};
 
     var promise = fetch(url, conf);
@@ -80,7 +99,7 @@ function sortByPrice() {
 
 function getAllCars() {
     event.preventDefault();
-    var url = dom + "/all";
+
     var conf = {method: "get"};
 
     var promise = fetch(url, conf);
