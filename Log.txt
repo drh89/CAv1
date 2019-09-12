@@ -44,4 +44,15 @@ Wednesday 11-09-19
 	Mute:
 		Jokes Javascript
 		Jokes HTML
+		
+Thursdag 12-09-19
+
+	Svensmark:
+		Support
+	Mute:
+		MySQL Error Handling
+		
+	
+	
+	
 	
