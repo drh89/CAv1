@@ -84,8 +84,13 @@ public class MembersResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Members.deleteAllRows").executeUpdate();
+<<<<<<< HEAD
             em.persist(new Members("Meep", "Turqoise", "sdf32"));
             em.persist(new Members("Doomlord Bob", "Scarlet", "asdf21"));
+=======
+            em.persist(new Members("Meep", "Turqoise", ""));
+            em.persist(new Members("Doomlord Bob", "Scarlet", ""));
+>>>>>>> c5203fd1df9609b01860179519cdb1cd33ba8409
 
             em.getTransaction().commit();
         } finally {

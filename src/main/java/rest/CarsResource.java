@@ -28,7 +28,7 @@ public class CarsResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
                 "pu",
-                "jdbc:mysql://localhost:3307/CA1DB",
+                "jdbc:mysql://localhost:3307/CAv1DB",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
@@ -94,26 +94,26 @@ public class CarsResource {
         Cars c28 = new Cars(28L, "Skoda", "Fabia", "27/10-1998", 1999L, 70L, 310000L, 5L, 23000L);
         Cars c29 = new Cars(29L, "Skoda", "Fabia", "23/03-2016", 2016L, 90L, 50000L, 5L, 199000L);
         Cars c30 = new Cars(30L, "Skoda", "Octavia", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c31 = new Cars(31L, "Skoda", "Octavia", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c32 = new Cars(32L, "Skoda", "Octavia", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c33 = new Cars(33L, "Skoda", "Octavia", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c34 = new Cars(34L, "Skoda", "Superb", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c35 = new Cars(35L, "Skoda", "Superb", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c36 = new Cars(36L, "Skoda", "Superb", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c31 = new Cars(31L, "Skoda", "Octavia", "22/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c32 = new Cars(32L, "Skoda", "Octavia", "23/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c33 = new Cars(33L, "Skoda", "Octavia", "24/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c34 = new Cars(34L, "Skoda", "Superb", "06/08-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c35 = new Cars(35L, "Skoda", "Superb", "06/09-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c36 = new Cars(36L, "Skoda", "Superb", "06/10-2013", 2012L, 178L, 5000L, 4L, 260000L);
         Cars c37 = new Cars(37L, "Skoda", "Kodiaq", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c38 = new Cars(38L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c39 = new Cars(39L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c40 = new Cars(40L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c41 = new Cars(41L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c42 = new Cars(42L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c43 = new Cars(43L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c44 = new Cars(44L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c45 = new Cars(45L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c46 = new Cars(46L, "Volvo", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c47 = new Cars(47L, "Nissan", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c48 = new Cars(48L, "Nissan", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c49 = new Cars(49L, "Nissan", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
-        Cars c50 = new Cars(50L, "Nissan", "330i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c38 = new Cars(38L, "Volvo", "330i", "06/03-2011", 2012L, 178L, 5000L, 4L, 20000L);
+        Cars c39 = new Cars(39L, "Volvo", "330i", "06/05-2016", 2012L, 178L, 5000L, 4L, 160000L);
+        Cars c40 = new Cars(40L, "Volvo", "330i", "06/03-2017", 2012L, 178L, 5000L, 4L, 360000L);
+        Cars c41 = new Cars(41L, "Volvo", "330i", "06/01-2018", 2012L, 178L, 5000L, 4L, 60000L);
+        Cars c42 = new Cars(42L, "Volvo", "230i", "06/11-2013", 2012L, 178L, 5000L, 4L, 6000L);
+        Cars c43 = new Cars(43L, "Volvo", "130i", "06/02-2019", 2012L, 178L, 5000L, 4L, 160000L);
+        Cars c44 = new Cars(44L, "Volvo", "130i", "06/03-2019", 2012L, 178L, 5000L, 4L, 360000L);
+        Cars c45 = new Cars(45L, "Volvo", "230i", "06/03-2013", 2012L, 178L, 5000L, 4L, 110000L);
+        Cars c46 = new Cars(46L, "Volvo", "230i", "06/03-2013", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c47 = new Cars(47L, "Nissan", "330i", "06/03-2015", 2012L, 178L, 5000L, 4L, 360000L);
+        Cars c48 = new Cars(48L, "Nissan", "330i", "06/03-2012", 2012L, 178L, 5000L, 4L, 660000L);
+        Cars c49 = new Cars(49L, "Nissan", "330i", "05/03-2011", 2012L, 178L, 5000L, 4L, 260000L);
+        Cars c50 = new Cars(50L, "Nissan", "330i", "06/02-2013", 2012L, 178L, 5000L, 4L, 260000L);
         
         
         
