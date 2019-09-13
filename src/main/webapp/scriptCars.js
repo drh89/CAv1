@@ -6,7 +6,7 @@ var btnFilter = document.getElementById("btnFilter");
 var input = document.getElementById("input");
 var btnPrice = document.getElementById("btnPrice");
 var inputPrice = document.getElementById("inputPrice");
-var dom = "http://localhost:8080/CAv1/api/cars";
+var dom = "/CAv1/api/cars";
 
 
 
